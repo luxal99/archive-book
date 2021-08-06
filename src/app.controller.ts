@@ -9,6 +9,10 @@ export class AppController {
     @Get()
     @Render("index")
     root() {
+    }
 
+    @Get("login")
+    @Render("pages/login")
+    login() {
     }
 }
