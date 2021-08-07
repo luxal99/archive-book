@@ -1,0 +1,15 @@
+h1 {
+    font-family: 'Work Sans', sans-serif;
+    font-weight: bold;
+}
+.text-right{
+    text-align: right!important;
+}
+.default-btn{
+    background-color: #121212;
+    font-family: 'Work Sans', sans-serif;
+    color: #fff;
+}
+.default-btn:hover{
+    color: #999;
+}
