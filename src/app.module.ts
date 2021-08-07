@@ -7,12 +7,16 @@ import { Location } from "./server/entity/Location";
 import { Mark } from "./server/entity/Mark";
 import { LocationModule } from "./server/resources/location/location.module";
 import { MarkModule } from "./server/resources/mark/mark.module";
+import { LocationService } from "./server/resources/location/location.service";
+import { LocationRepository } from "./server/repository/LocationRepository";
 
 @Module({
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
     }),
+
+    TypeOrmModule.forFeature([LocationRepository]),
     TypeOrmModule.forRoot({
       type: "mysql",
       host: "localhost",
@@ -26,7 +30,7 @@ import { MarkModule } from "./server/resources/mark/mark.module";
     LocationModule, MarkModule,
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService, LocationService],
 })
 export class AppModule {
 }

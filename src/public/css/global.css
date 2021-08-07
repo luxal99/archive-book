@@ -1,15 +1,47 @@
 h1 {
     font-family: 'Work Sans', sans-serif;
     font-weight: bold;
+    font-size: 32px;
 }
-.text-right{
-    text-align: right!important;
+
+h2 {
+    font-size: 24px;
 }
-.default-btn{
+
+h3 {
+    font-size: 18.72px;
+}
+
+h4 {
+    font-size: 16px;
+}
+
+h5 {
+    font-size: 13.28px;
+}
+
+h6 {
+    font-size: 12px
+}
+
+h2, h3, h4, h5,h6 {
+    font-family: 'Work Sans', sans-serif;
+}
+
+.text-right {
+    text-align: right !important;
+}
+
+.default-btn {
     background-color: #121212;
     font-family: 'Work Sans', sans-serif;
     color: #fff;
 }
-.default-btn:hover{
+
+.default-btn:hover {
     color: #999;
+}
+.divider{
+    height: 1px;
+    background-color: #e3e3e3;
 }
