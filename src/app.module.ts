@@ -9,6 +9,8 @@ import { LocationModule } from "./server/resources/location/location.module";
 import { MarkModule } from "./server/resources/mark/mark.module";
 import { LocationService } from "./server/resources/location/location.service";
 import { LocationRepository } from "./server/repository/LocationRepository";
+import { MarkRepository } from "./server/repository/MarkRepository";
+import { MarkService } from "./server/resources/mark/mark.service";
 
 @Module({
   imports: [
@@ -16,7 +18,7 @@ import { LocationRepository } from "./server/repository/LocationRepository";
       isGlobal: true,
     }),
 
-    TypeOrmModule.forFeature([LocationRepository]),
+    TypeOrmModule.forFeature([LocationRepository, MarkRepository]),
     TypeOrmModule.forRoot({
       type: "mysql",
       host: "localhost",
@@ -30,7 +32,7 @@ import { LocationRepository } from "./server/repository/LocationRepository";
     LocationModule, MarkModule,
   ],
   controllers: [AppController],
-  providers: [AppService, LocationService],
+  providers: [AppService, LocationService, MarkService],
 })
 export class AppModule {
 }
