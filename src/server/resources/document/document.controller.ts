@@ -14,7 +14,7 @@ export class DocumentController extends GenericController<Document> {
   }
 
   @Post()
-  @UseInterceptors(FileInterceptor("image", {
+  @UseInterceptors(FileInterceptor("document", {
     storage: diskStorage({
       destination: "/home/luxal/PC/Project/ArchiveBook/src/public/documents",
       filename: (req, file, cb) => {
