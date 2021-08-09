@@ -17,7 +17,7 @@ CREATE TABLE `location`
     `id`   int          NOT NULL AUTO_INCREMENT,
     `name` varchar(255) NOT NULL,
     PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+) 
 
 CREATE TABLE `mark`
 (
@@ -28,7 +28,7 @@ CREATE TABLE `mark`
     PRIMARY KEY (`id`),
     KEY           `FK_f55b6a6f7bf7aa22c9b866aaa95` (`id_location`),
     CONSTRAINT `FK_f55b6a6f7bf7aa22c9b866aaa95` FOREIGN KEY (`id_location`) REFERENCES `location` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+) 
 ```
 
 1. Setup your local credentials for .evn
