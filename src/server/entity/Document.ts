@@ -14,10 +14,10 @@ export class Document {
   public uri?: string;
   @Column("int", { name: "id_archive_book" })
   @ManyToOne(
-    () => Location,
-    (location) => location.listOfMarks,
+    () => ArchiveBook,
+    (archiveBook) => archiveBook.listOfDocuments,
     { onDelete: "NO ACTION", onUpdate: "NO ACTION" },
   )
   @JoinColumn([{ name: "id_archive_book", referencedColumnName: "id" }])
-  public idArchiveBook?: ArchiveBook;
+  public idArchiveBook: ArchiveBook;
 }

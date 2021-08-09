@@ -32,7 +32,7 @@
             </li>
             <li class="nav-item" role="presentation">
                 <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#document"
-                        type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Documents
+                        type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Archive book
                 </button>
             </li>
         </ul>
@@ -183,6 +183,26 @@
                 </div>
             </div>
             <div class="tab-pane fade" id="document" role="tabpanel" aria-labelledby="pills-profile-tab">
+                <h3><b>Create</b></h3>
+                <form id="archive-book-form">
+                    <input class="form-control" type="text" name="title"
+                           placeholder="Name">
+                    <input class="form-control" type="text" name="shelfNo"
+                           placeholder="Name">
+                    <select class="form-control" name="idLocation"
+                            style="margin-top: 1em">
+                        <% for(var x = 0; x < listOfLocations.length; x++) { %>
+                            <option value='<%= listOfLocations[x].id %>'><%= listOfLocations[x].name %></option>
+                        <% } %>
+                    </select>
+                    <select class="form-control" name="idMark"
+                            style="margin: 1em 0">
+                        <% for(var x = 0; x < listOfMarks.length; x++) { %>
+                            <option value='<%= listOfMarks[x].id %>'><%= listOfMarks[x].name %></option>
+                        <% } %>
+                    </select>
+                    <button class="btn btn-primary" type="button" onclick="test()">Test</button>
+                </form>
                 <label class="custom-upload">
                     <input type="file" multiple id="document-upload">
                     <img src="/img/upload-image-icon-png-11.jpg" width="100px" height="100px">
@@ -211,8 +231,8 @@
                         <div class="divider"></div>
                     </div>
                 <% } %>
-                <button class="default-btn btn " style="margin-top: 2em" onclick="upload()"><i class="fa fa-upload"
-                                                                                               aria-hidden="true"></i>
+                <button class="default-btn btn " style="margin-top: 2em" onclick="archiveBook()"><i class="fa fa-upload"
+                                                                                                    aria-hidden="true"></i>
                     Uplaod
                 </button>
 
@@ -220,6 +240,9 @@
         </div>
     </div>
 </div>
+
+<script>
+</script>
 <script src="/js/global.js"></script>
 <script src="/js/location.js"></script>
 <script src="/js/upload.js"></script>

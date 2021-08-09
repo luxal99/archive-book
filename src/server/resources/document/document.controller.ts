@@ -7,14 +7,16 @@ import { diskStorage } from "multer";
 import { extname } from "path";
 import { Request, Response } from "express";
 import { UPLOAD_PATH } from "../../constant/constant";
+import { ArchiveBookService } from "../archive-book/archive-book.service";
 
 @Controller("document")
 export class DocumentController extends GenericController<Document> {
-  constructor(private readonly documentService: DocumentService) {
+  constructor(private readonly documentService: DocumentService,
+              private archiveBookService: ArchiveBookService) {
     super(documentService);
   }
 
-  @Post()
+  @Post("/:id")
   @UseInterceptors(FileInterceptor("document", {
     storage: diskStorage({
       destination: UPLOAD_PATH,
@@ -26,7 +28,9 @@ export class DocumentController extends GenericController<Document> {
   }))
   async uploadFile(@Req() req: Request, @Res() res: Response, @UploadedFile() file: Express.Multer.File, @Param("id") id: number) {
     try {
+      const archiveBook = await this.archiveBookService.findOne(id);
       res.send(await this.documentService.save({
+        idArchiveBook: archiveBook,
         name: file.originalname,
         uri: `/documents/${file.filename}`,
       }));

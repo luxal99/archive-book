@@ -13,4 +13,15 @@ function setValueToInput(elementId, models) {
   }
 }
 
-
+function httpRequest(url, method, body, callBack) {
+  fetch(url, {
+    method: method,
+    headers: {
+      "Accept": "application/json",
+      "Content-Type": "application/json",
+    },
+    body: body ? body : {},
+  }).then(() => {
+    callBack();
+  });
+};

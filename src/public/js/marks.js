@@ -1,15 +1,3 @@
-function httpRequest(url, method, body, callBack) {
-  fetch(url, {
-    method: method,
-    headers: {
-      "Accept": "application/json",
-      "Content-Type": "application/json",
-    },
-    body: body ? body : {},
-  }).then(() => {
-    callBack();
-  });
-};
 
 function updateMark() {
   httpRequest(API + "mark", "PUT", JSON.stringify({

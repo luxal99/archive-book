@@ -44,7 +44,7 @@ CREATE TABLE `mark`
 3. DB_PASSWORD=local_db_password
 4. DB_NAME should be archive_book
 
-### Setup upload path
+### Setup archiveBook path
 
 1. Open file
 

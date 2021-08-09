@@ -1,5 +1,6 @@
-import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 import { Location } from "./Location";
+import { ArchiveBook } from "./ArchiveBook";
 
 @Entity()
 export class Mark {
@@ -8,6 +9,12 @@ export class Mark {
 
   @Column()
   public name: string;
+
+  @OneToMany(
+    () => ArchiveBook,
+    (mark) => mark.idMark
+  )
+  public listOfArchives!: ArchiveBook[];
 
   @Column("int", { name: "id_location" })
   @ManyToOne(
