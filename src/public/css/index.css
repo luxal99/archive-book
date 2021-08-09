@@ -28,3 +28,12 @@
 #edit-form-row, #edit-mark-row, #mark-form-row {
     display: none;
 }
+
+.custom-upload {
+    padding: 4em 3em;
+    cursor: pointer;
+    border-radius: 20px;
+    width: 100%;
+    border: 2px dashed #f1f1f1;
+    text-align: center;
+}
