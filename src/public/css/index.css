@@ -37,3 +37,10 @@
     border: 2px dashed #f1f1f1;
     text-align: center;
 }
+
+@media screen and (max-width: 570px) {
+    .wrapper {
+        padding: 5em 1em;
+        height: auto;
+    }
+}
