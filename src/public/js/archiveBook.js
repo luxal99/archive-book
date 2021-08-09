@@ -1,15 +1,33 @@
-function create() {
+const API = "http://localhost:8080/";
+
+async function create() {
   const archiveBookForm = document.getElementById("archive-book-form").elements;
+
   const body = {
-    title: archiveBookForm.title,
-    idLocation: archiveBookForm.idLocation,
-    idMark: archiveBookForm.idMark,
-    note: archiveBookForm.note,
+    title: archiveBookForm.title.value,
+    idLocation: { id: archiveBookForm.idLocation.value },
+    idMark: { id: archiveBookForm.idMark.value },
+    note: archiveBookForm.note.value,
+    shelfNo: archiveBookForm.shelfNo.value,
   };
+
+  const response = await fetch(API + "archive-book", {
+    method: "POST",
+    headers: {
+      "Accept": "application/json",
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(body),
+  }).catch((err) => {
+    console.log(err);
+  });
+
+  const savedArchiveBook = await response.json();
+  await uploadDocuments(savedArchiveBook.id);
 }
 
-async function archiveBook(idArchiveBook) {
-  const files = document.getElementById("document-archiveBook").files;
+async function uploadDocuments(idArchiveBook) {
+  const files = document.getElementById("document-upload").files;
   for (const file of files) {
     const formData = new FormData();
     formData.append("document", file);
