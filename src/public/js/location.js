@@ -1,4 +1,4 @@
-const API = "http://localhost:8080/";
+const API = "https://archive-book.luxal.dev/";
 
 function httpRequest(url, method, body, callBack) {
   fetch(url, {
@@ -7,7 +7,7 @@ function httpRequest(url, method, body, callBack) {
       "Accept": "application/json",
       "Content-Type": "application/json",
     },
-    body,
+    body: body ? body : {},
   }).then(() => {
     callBack();
   });
@@ -30,5 +30,11 @@ function addLocation() {
 }
 
 function deleteLocation(idLocation) {
-  httpRequest(API + `location/${idLocation}`, "DELETE");
+  fetch(API + `location/${idLocation}`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: null,
+  });
 }
