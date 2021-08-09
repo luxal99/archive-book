@@ -20,7 +20,6 @@ export class GenericController<T> {
   @Put()
   async put(@Req() req: Request, @Res() res: Response) {
     try {
-      console.log(req.body);
       await this.genericService.update(req.body.id, req.body).then((resp) => {
         res.status(HttpStatus.OK).send(resp);
       });
