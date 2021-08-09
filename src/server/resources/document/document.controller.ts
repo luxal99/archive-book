@@ -27,7 +27,7 @@ export class DocumentController extends GenericController<Document> {
   async uploadFile(@Req() req: Request, @Res() res: Response, @UploadedFile() file: Express.Multer.File, @Param("id") id: number) {
     try {
       res.send(await this.documentService.save({
-        name: file.filename,
+        name: file.originalname,
         uri: `/documents/${file.filename}`,
       }));
     } catch (err) {
