@@ -45,7 +45,8 @@
                                         <h4> <%= listOfLocations[i].name; %> </h4>
                                     </div>
                                     <div class="col-4">
-                                        <button class="btn " style="color: #ff4a4a">
+                                        <button class="btn " style="color: #ff4a4a"
+                                                onclick="deleteLocation(<%= listOfLocations[i].id %>)">
                                             <i class="fa fa-trash" aria-hidden="true"></i>
                                         </button>
                                         <button class="btn " style="color: #ffa54a">
@@ -82,22 +83,32 @@
 <script>
 
   function showAddForm() {
-    document.getElementById('form-row').style.display = 'block'
+    document.getElementById("form-row").style.display = "block";
   }
 
   function hideAddForm() {
-    document.getElementById('form-row').style.display = 'none'
+    document.getElementById("form-row").style.display = "none";
   }
 
   function addLocation() {
-    fetch('http://localhost:8080/location', {
+    fetch("http://localhost:8080/location", {
       method: "POST",
       headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
+        "Accept": "application/json",
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify({ name: document.getElementById('locationName').value })
-    })
+      body: JSON.stringify({ name: document.getElementById("locationName").value }),
+    });
+  }
+
+  function deleteLocation(idLocation) {
+    fetch(`http://localhost:8080/location/${idLocation}`, {
+      method: "DELETE",
+      headers: {
+        "Accept": "application/json",
+        "Content-Type": "application/json",
+      },
+    });
   }
 </script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
