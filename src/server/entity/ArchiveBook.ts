@@ -17,5 +17,5 @@ export class ArchiveBook {
     () => Document,
     (mark) => mark.idArchiveBook,
   )
-  public listOfDocuments!: Document[];
+  public listOfDocuments?: Document[];
 }

@@ -19,5 +19,5 @@ export class Document {
     { onDelete: "NO ACTION", onUpdate: "NO ACTION" },
   )
   @JoinColumn([{ name: "id_archive_book", referencedColumnName: "id" }])
-  public idArchiveBook: ArchiveBook;
+  public idArchiveBook?: ArchiveBook;
 }

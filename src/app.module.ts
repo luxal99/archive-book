@@ -15,6 +15,8 @@ import { DocumentModule } from "./server/resources/document/document.module";
 import { Document } from "./server/entity/Document";
 import { DocumentService } from "./server/resources/document/document.service";
 import { DocumentRepository } from "./server/repository/DocumentRepository";
+import { ArchiveBook } from "./server/entity/ArchiveBook";
+import { ArchiveBookModule } from "./server/resources/archive-book/archive-book.module";
 
 @Module({
   imports: [
@@ -31,9 +33,9 @@ import { DocumentRepository } from "./server/repository/DocumentRepository";
       password: process.env.DB_PASSWORD,
       database: process.env.DB_NAME,
       synchronize: true,
-      entities: [Location, Mark, Document],
+      entities: [Location, Mark, Document, ArchiveBook],
     }),
-    LocationModule, MarkModule, DocumentModule,
+    LocationModule, MarkModule, DocumentModule, ArchiveBookModule,
   ],
   controllers: [AppController],
   providers: [AppService, LocationService, MarkService, DocumentService],
