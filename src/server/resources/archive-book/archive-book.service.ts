@@ -7,6 +7,6 @@ import { ArchiveBookRepository } from "../../repository/ArchiveBookRepository";
 export class ArchiveBookService extends GenericService<ArchiveBook> {
 
   constructor(genericRepository: ArchiveBookRepository) {
-    super(genericRepository, []);
+    super(genericRepository, ["idMark", "idLocation", "listOfDocuments"]);
   }
 }

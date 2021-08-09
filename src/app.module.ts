@@ -17,6 +17,8 @@ import { DocumentService } from "./server/resources/document/document.service";
 import { DocumentRepository } from "./server/repository/DocumentRepository";
 import { ArchiveBook } from "./server/entity/ArchiveBook";
 import { ArchiveBookModule } from "./server/resources/archive-book/archive-book.module";
+import { ArchiveBookRepository } from "./server/repository/ArchiveBookRepository";
+import { ArchiveBookService } from "./server/resources/archive-book/archive-book.service";
 
 @Module({
   imports: [
@@ -24,7 +26,8 @@ import { ArchiveBookModule } from "./server/resources/archive-book/archive-book.
       isGlobal: true,
     }),
 
-    TypeOrmModule.forFeature([LocationRepository, MarkRepository, DocumentRepository]),
+    TypeOrmModule.forFeature([LocationRepository,
+      MarkRepository, DocumentRepository, ArchiveBookRepository]),
     TypeOrmModule.forRoot({
       type: "mysql",
       host: "localhost",
@@ -38,7 +41,8 @@ import { ArchiveBookModule } from "./server/resources/archive-book/archive-book.
     LocationModule, MarkModule, DocumentModule, ArchiveBookModule,
   ],
   controllers: [AppController],
-  providers: [AppService, LocationService, MarkService, DocumentService],
+  providers: [AppService, LocationService,
+    MarkService, DocumentService, ArchiveBookService],
 })
 export class AppModule {
 }

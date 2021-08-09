@@ -25,7 +25,7 @@
     padding: 1em 0;
 }
 
-#edit-form-row, #edit-mark-row, #mark-form-row {
+#edit-form-row, #edit-mark-row, #mark-form-row, #create {
     display: none;
 }
 
@@ -36,6 +36,21 @@
     width: 100%;
     border: 2px dashed #f1f1f1;
     text-align: center;
+}
+
+.ab-card {
+    border: 1px solid #00c3f6;
+    cursor: pointer;
+    margin: .25em;
+    padding: 5em;
+    -webkit-transition: .3s linear;
+}
+
+.ab-card:hover {
+    transition: .3s linear;
+    color: #fff;
+    border: 0;
+    background: #7F7FD5; /* fallback for old browsers */
 }
 
 @media screen and (max-width: 570px) {
