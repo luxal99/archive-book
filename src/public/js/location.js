@@ -32,6 +32,7 @@ function addLocation() {
 function deleteLocation(idLocation) {
   fetch(API + `location/${idLocation}`, {
     method: "DELETE",
+    mode: "cors",
     headers: {
       "Content-Type": "application/json",
     },

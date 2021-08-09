@@ -5,7 +5,7 @@ function httpRequest(url, method, body, callBack) {
       "Accept": "application/json",
       "Content-Type": "application/json",
     },
-    body,
+    body: body ? body : {},
   }).then(() => {
     callBack();
   });
@@ -34,7 +34,14 @@ function addMark() {
 }
 
 function deleteMark(idMark) {
-  httpRequest(API + `mark/${idMark}`, "DELETE");
+  fetch(API + `mark/${idLocation}`, {
+    method: "DELETE",
+    mode: "cors",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: null,
+  });
 }
 
 
