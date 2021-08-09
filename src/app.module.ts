@@ -11,6 +11,10 @@ import { LocationService } from "./server/resources/location/location.service";
 import { LocationRepository } from "./server/repository/LocationRepository";
 import { MarkRepository } from "./server/repository/MarkRepository";
 import { MarkService } from "./server/resources/mark/mark.service";
+import { DocumentModule } from "./server/resources/document/document.module";
+import { Document } from "./server/entity/Document";
+import { DocumentService } from "./server/resources/document/document.service";
+import { DocumentRepository } from "./server/repository/DocumentRepository";
 
 @Module({
   imports: [
@@ -18,7 +22,7 @@ import { MarkService } from "./server/resources/mark/mark.service";
       isGlobal: true,
     }),
 
-    TypeOrmModule.forFeature([LocationRepository, MarkRepository]),
+    TypeOrmModule.forFeature([LocationRepository, MarkRepository, DocumentRepository]),
     TypeOrmModule.forRoot({
       type: "mysql",
       host: "localhost",
@@ -27,12 +31,12 @@ import { MarkService } from "./server/resources/mark/mark.service";
       password: process.env.DB_PASSWORD,
       database: process.env.DB_NAME,
       synchronize: true,
-      entities: [Location, Mark],
+      entities: [Location, Mark, Document],
     }),
-    LocationModule, MarkModule,
+    LocationModule, MarkModule, DocumentModule,
   ],
   controllers: [AppController],
-  providers: [AppService, LocationService, MarkService],
+  providers: [AppService, LocationService, MarkService, DocumentService],
 })
 export class AppModule {
 }

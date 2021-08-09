@@ -3,11 +3,11 @@ import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 @Entity()
 export class Document {
   @PrimaryGeneratedColumn({ type: "int", name: "id" })
-  public id: number;
+  public id?: number;
 
   @Column()
-  public name: string;
+  public name?: string;
 
   @Column()
-  public uri: string;
+  public uri?: string;
 }
