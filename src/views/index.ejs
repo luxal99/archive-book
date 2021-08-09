@@ -37,10 +37,30 @@
                     <div class="col">
                         <h1>Location</h1>
                         <h3>Current locations</h3>
+                        <div id="edit-form-row">
+                            <form>
+                                <input class="form-control" type="hidden" name="idLocation"
+                                       placeholder="Name">
+                                <input class="form-control" type="text" name="name" id="editLocationName"
+                                       placeholder="Name">
+                            </form>
+                            <div class="m-1 text-right">
+                                <button class="btn default-btn"
+                                        onclick="update()">
+                                    +
+                                </button>
+                                <button class="btn btn-danger" onclick="hide('editM-form-row')">x</button>
+                            </div>
+
+                        </div>
                         <% for (var i = 0; i < listOfLocations.length ; i++) { %>
                             <div class="location-item">
                                 <div class="row">
-                                    <div class="col-8">
+                                    <div class="col-2">
+                                        <h6><b>ID</b></h6>
+                                        <h4> <%= listOfLocations[i].id; %> </h4>
+                                    </div>
+                                    <div class="col-6">
                                         <h6><b>Name</b></h6>
                                         <h4> <%= listOfLocations[i].name; %> </h4>
                                     </div>
@@ -50,23 +70,11 @@
                                             <i class="fa fa-trash" aria-hidden="true"></i>
                                         </button>
                                         <button class="btn " style="color: #ffa54a"
-                                                onclick="setValueToInput('edit-form-row','editLocationName',`<%= listOfLocations[i].name %>`)">
+                                                onclick="setValueToInput('edit-form-row',[{name:'editLocationName',value:`<%= listOfLocations[i].name %>`},
+                                                        {name:'idLocation',value:`<%= listOfLocations[i].id %>`}])">
                                             <i class="fa fa-pencil-square" aria-hidden="true"></i>
                                         </button>
                                     </div>
-                                </div>
-                                <div id="edit-form-row">
-                                    <form>
-                                        <input class="form-control" type="text" name="name" id="editLocationName"
-                                               placeholder="Name">
-                                    </form>
-                                    <div class="m-1 text-right">
-                                        <button class="btn default-btn" onclick="update(`<%= listOfLocations[i].id %>`)">
-                                            +
-                                        </button>
-                                        <button class="btn btn-danger" onclick="hide('edit-form-row')">x</button>
-                                    </div>
-
                                 </div>
                                 <div class="divider"></div>
                             </div>
@@ -89,60 +97,92 @@
                 </div>
             </div>
             <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-                <h1>Marks</h1>
+                <div class="row">
+                    <div class="col">
+                        <h1>Marks</h1>
+                        <h3>Current marks</h3>
+                        <div id="edit-mark-row">
+                            <form>
+                                <input class="form-control" type="text" name="name" id="editMarkName"
+                                       placeholder="Name">
+                                <input class="form-control" type="hidden" name="id" id="idMark"
+                                       placeholder="Name">
+                                <select class="form-control" id="editIdLocation" name="idLocation"
+                                        style="margin-top: 1em">
+                                    <% for(var x = 0; x < listOfLocations.length; x++) { %>
+                                        <option value='<%= listOfLocations[x].id %>'><%= listOfLocations[x].name %></option>
+                                    <% } %>
+                                </select>
+                            </form>
+                            <div class="m-1 text-right">
+                                <button class="btn default-btn"
+                                        onclick="updateMark()">
+                                    +
+                                </button>
+                                <button class="btn btn-danger" onclick="hide('edit-mark-row')">x</button>
+                            </div>
+
+                        </div>
+                        <% for (var j = 0; j < listOfMarks.length ; j++) { %>
+                            <div class="location-item">
+                                <div class="row">
+                                    <div class="col-2">
+                                        <h6><b>ID</b></h6>
+                                        <h4> <%= listOfMarks[j].id; %> </h4>
+                                    </div>
+                                    <div class="col-2">
+                                        <h6><b>Name</b></h6>
+                                        <h4> <%= listOfMarks[j].name; %> </h4>
+                                    </div>
+                                    <div class="col-3">
+                                        <h6><b>Location</b></h6>
+                                        <h4> <%= listOfMarks[j].idLocation.name; %> </h4>
+                                    </div>
+                                    <div class="col-4">
+                                        <button class="btn " style="color: #ff4a4a"
+                                                onclick="(`<%= listOfMarks[j].id %>`)">
+                                            <i class="fa fa-trash" aria-hidden="true"></i>
+                                        </button>
+                                        <button class="btn " style="color: #ffa54a"
+                                                onclick="setValueToInput('edit-mark-row',[
+                                                        {name:'editIdLocation',value:`<%= listOfMarks[j].idLocation.id %>`},
+                                                        {name:'editMarkName',value:`<%= listOfMarks[j].name %>`},
+                                                        {name:'idMark',value:`<%= listOfMarks[j].id %>`}])">
+                                            <i class="fa fa-pencil-square" aria-hidden="true"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="divider"></div>
+                            </div>
+                        <% } %>
+                        <div id="mark-form-row">
+                            <form>
+                                <input class="form-control" type="text" name="name" id="markName"
+                                       placeholder="Name">
+                                <select class="form-control" id="idLocation" name="idLocation" style="margin-top: 1em">
+                                    <% for(var x = 0; x < listOfLocations.length; x++) { %>
+                                        <option value='<%= listOfLocations[x].id %>'><%= listOfLocations[x].name %></option>
+                                    <% } %>
+                                </select>
+                            </form>
+                            <div class="m-1 text-right">
+                                <button class="btn default-btn" onclick="addMark()">+</button>
+                                <button class="btn btn-danger" onclick="hide('mark-form-row')">x</button>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col text-right">
+                        <button class="btn default-btn" onclick="show('mark-form-row')">Add</button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </div>
-<script>
-
-  function show(elementId) {
-    document.getElementById(elementId).style.display = "block";
-  }
-
-  function hide(elementId) {
-    document.getElementById(elementId).style.display = "none";
-  }
-
-  function setValueToInput(elementId, inputId, value) {
-    show(elementId);
-    document.getElementById(inputId).value = value;
-  }
-
-  function update(id) {
-    fetch("http://localhost:8080/location", {
-      method: "PUT",
-      headers: {
-        "Accept": "application/json",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        id,
-        name: document.getElementById("editLocationName").value,
-      }),
-    });
-  }
-
-  function addLocation() {
-    fetch("http://localhost:8080/location", {
-      method: "POST",
-      headers: {
-        "Accept": "application/json",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ name: document.getElementById("locationName").value }),
-    });
-  }
-
-  function deleteLocation(idLocation) {
-    fetch(`http://localhost:8080/location/${idLocation}`, {
-      method: "DELETE",
-      headers: {
-        "Accept": "application/json",
-        "Content-Type": "application/json",
-      },
-    });
-  }
+<script src="/js/global.js"></script>
+<script src="/js/location.js"></script>
+<script src="/js/marks.js">
 </script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"

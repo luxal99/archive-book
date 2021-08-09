@@ -7,6 +7,6 @@ import { MarkRepository } from "../../repository/MarkRepository";
 export class MarkService extends GenericService<Mark> {
 
   constructor(genericRepository: MarkRepository) {
-    super(genericRepository, []);
+    super(genericRepository, ["idLocation"]);
   }
 }

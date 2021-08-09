@@ -25,6 +25,6 @@
     padding: 1em 0;
 }
 
-#edit-form-row {
+#edit-form-row, #edit-mark-row, #mark-form-row {
     display: none;
 }
