@@ -30,8 +30,5 @@ function addLocation() {
 }
 
 function deleteLocation(idLocation) {
-  httpRequest(API + `location/${idLocation}`, "DELETE", {}, () => {
-    alert("Successfully deleted");
-  });
-
+  httpRequest(API + `location/${idLocation}`, "DELETE");
 }

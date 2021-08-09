@@ -24,7 +24,7 @@ export class GenericController<T> {
         res.status(HttpStatus.OK).send(resp);
       });
     } catch (e) {
-      res.status(HttpStatus.BAD_GATEWAY).send({e});
+      res.status(HttpStatus.BAD_GATEWAY).send({ e });
     }
   }
 
@@ -48,13 +48,10 @@ export class GenericController<T> {
 
   @Delete("/:id")
   async delete(@Param("id") id: number, @Res() res: Response) {
-    try {
-      await this.genericService.delete(id).then(() => {
-        res.sendStatus(HttpStatus.OK);
-      });
-    } catch (err) {
-      res.status(HttpStatus.BAD_GATEWAY).send({ err });
-    }
+    await this.genericService.delete(id).then(() => {
+      res.sendStatus(HttpStatus.OK);
+    });
+
   }
 
   @Post("/deleteAll")
