@@ -20,6 +20,11 @@
 #form-row {
     display: none;
 }
-.location-item{
+
+.location-item {
     padding: 1em 0;
+}
+
+#edit-form-row {
+    display: none;
 }

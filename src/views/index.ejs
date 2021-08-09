@@ -49,10 +49,24 @@
                                                 onclick="deleteLocation(<%= listOfLocations[i].id %>)">
                                             <i class="fa fa-trash" aria-hidden="true"></i>
                                         </button>
-                                        <button class="btn " style="color: #ffa54a">
+                                        <button class="btn " style="color: #ffa54a"
+                                                onclick="setValueToInput('edit-form-row','editLocationName',`<%= listOfLocations[i].name %>`)">
                                             <i class="fa fa-pencil-square" aria-hidden="true"></i>
                                         </button>
                                     </div>
+                                </div>
+                                <div id="edit-form-row">
+                                    <form>
+                                        <input class="form-control" type="text" name="name" id="editLocationName"
+                                               placeholder="Name">
+                                    </form>
+                                    <div class="m-1 text-right">
+                                        <button class="btn default-btn" onclick="update(`<%= listOfLocations[i].id %>`)">
+                                            +
+                                        </button>
+                                        <button class="btn btn-danger" onclick="hide('edit-form-row')">x</button>
+                                    </div>
+
                                 </div>
                                 <div class="divider"></div>
                             </div>
@@ -64,13 +78,13 @@
                             </form>
                             <div class="m-1 text-right">
                                 <button class="btn default-btn" onclick="addLocation()">+</button>
-                                <button class="btn btn-danger" onclick="hideAddForm()">x</button>
+                                <button class="btn btn-danger" onclick="hide('form-row')">x</button>
                             </div>
 
                         </div>
                     </div>
                     <div class="col text-right">
-                        <button class="btn default-btn" onclick="showAddForm()">Add</button>
+                        <button class="btn default-btn" onclick="show('form-row')">Add</button>
                     </div>
                 </div>
             </div>
@@ -82,12 +96,31 @@
 </div>
 <script>
 
-  function showAddForm() {
-    document.getElementById("form-row").style.display = "block";
+  function show(elementId) {
+    document.getElementById(elementId).style.display = "block";
   }
 
-  function hideAddForm() {
-    document.getElementById("form-row").style.display = "none";
+  function hide(elementId) {
+    document.getElementById(elementId).style.display = "none";
+  }
+
+  function setValueToInput(elementId, inputId, value) {
+    show(elementId);
+    document.getElementById(inputId).value = value;
+  }
+
+  function update(id) {
+    fetch("http://localhost:8080/location", {
+      method: "PUT",
+      headers: {
+        "Accept": "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        id,
+        name: document.getElementById("editLocationName").value,
+      }),
+    });
   }
 
   function addLocation() {
