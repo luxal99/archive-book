@@ -231,12 +231,14 @@
                 </div>
                 <div class="row">
                     <% for(let i = 0; i < listOfArchiveBooks.length; i++) { %>
-                        <div class="col ab-card">
+                        <div class="col ab-card" onclick="openArchiveBookOverview(`<%=listOfArchiveBooks[i].id%>`)">
                             <h3 class="text-center"><%= listOfArchiveBooks[i].title %></h3>
                         </div>
                     <% } %>
                 </div>
-            </div>
+
+                <!-- Modal -->
+               </div>
         </div>
     </div>
 </div>

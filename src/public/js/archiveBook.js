@@ -38,3 +38,8 @@ async function uploadDocuments(idArchiveBook) {
     });
   }
 }
+
+function openArchiveBookOverview(archiveBookID) {
+  location.href = `http://localhost:8080/overview/${archiveBookID}`;
+}
+

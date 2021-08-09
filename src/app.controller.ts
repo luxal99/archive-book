@@ -1,4 +1,4 @@
-import { Controller, Get, Render } from "@nestjs/common";
+import { Controller, Get, Param, Render } from "@nestjs/common";
 import { AppService } from "./app.service";
 import { LocationService } from "./server/resources/location/location.service";
 import { MarkService } from "./server/resources/mark/mark.service";
@@ -26,5 +26,11 @@ export class AppController {
   @Get("login")
   @Render("pages/login")
   login() {
+  }
+
+  @Get("overview/:id")
+  @Render("pages/archive-overview")
+  async archiveOverview(@Param("id") id: number) {
+    return { archive: await this.archiveBookService.findOne(id) };
   }
 }
