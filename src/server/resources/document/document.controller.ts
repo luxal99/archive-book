@@ -6,6 +6,7 @@ import { FileInterceptor } from "@nestjs/platform-express";
 import { diskStorage } from "multer";
 import { extname } from "path";
 import { Request, Response } from "express";
+import { UPLOAD_PATH } from "../../constant/constant";
 
 @Controller("document")
 export class DocumentController extends GenericController<Document> {
@@ -16,7 +17,7 @@ export class DocumentController extends GenericController<Document> {
   @Post()
   @UseInterceptors(FileInterceptor("document", {
     storage: diskStorage({
-      destination: "/home/luxal/PC/Project/ArchiveBook/src/public/documents",
+      destination: UPLOAD_PATH,
       filename: (req, file, cb) => {
         const randomName = Array(32).fill(null).map(() => (Math.round(Math.random() * 16)).toString(16)).join("");
         cb(null, `${randomName}${extname(file.originalname)}`);
