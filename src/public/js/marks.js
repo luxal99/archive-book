@@ -34,9 +34,7 @@ function addMark() {
 }
 
 function deleteMark(idMark) {
-  httpRequest(API + `mark/${idMark}`, "DELETE", {}, () => {
-    alert("Successfully deleted");
-  });
+  httpRequest(API + `mark/${idMark}`, "DELETE");
 }
 
 
