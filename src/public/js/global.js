@@ -23,12 +23,23 @@ async function httpRequest(url, method, body, callBack) {
     body: body ? body : {},
   }).then(async () => {
     callBack();
-    await refreshData();
   });
 };
 
 async function refreshData() {
   const response = await fetch(API, {
+    method: "GET",
+    mode: "cors",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+
+  document.getElementById("body").innerHTML = await response.text();
+}
+
+async function refreshOverviewData() {
+  const response = await fetch(document.URL, {
     method: "GET",
     mode: "cors",
     headers: {

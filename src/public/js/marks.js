@@ -3,8 +3,9 @@ async function updateMark() {
     id: getValueByID("idMark"),
     name: getValueByID("editMarkName"),
     idLocation: { id: getValueByID("editIdLocation") },
-  }), () => {
+  }), async () => {
     alert("Successfully updated");
+    await refreshData();
   });
 
 }
@@ -15,8 +16,9 @@ async function addMark() {
       name: document.getElementById("markName").value,
       idLocation: { id: getValueByID("idLocation") },
     },
-  ), () => {
+  ), async () => {
     alert("Successfully created");
+    await refreshData();
   });
 }
 
@@ -29,7 +31,6 @@ async function deleteMark(idMark) {
     },
     body: null,
   });
-
   await refreshData();
 }
 

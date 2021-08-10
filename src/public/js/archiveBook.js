@@ -18,8 +18,7 @@ async function create() {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(body),
-  }).catch((err) => {
-    console.log(err);
+  }).catch(() => {
   });
 
   const savedArchiveBook = await response.json();
@@ -43,3 +42,15 @@ function openArchiveBookOverview(archiveBookID) {
   location.href = `http://localhost:8080/overview/${archiveBookID}`;
 }
 
+async function deleteDocument(idDocument) {
+  await fetch(API + `document/${idDocument}`, {
+    method: "DELETE",
+    mode: "cors",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: null,
+  }).then(async () => {
+    await refreshOverviewData();
+  });
+}

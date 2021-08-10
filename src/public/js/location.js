@@ -1,9 +1,10 @@
-function update() {
-  httpRequest(API + "location", "PUT", JSON.stringify({
+async function update() {
+  await httpRequest(API + "location", "PUT", JSON.stringify({
     id: document.getElementById("idLocation").value,
     name: document.getElementById("editLocationName").value,
-  }), () => {
+  }), async () => {
     alert("Successfully updated");
+    await refreshData();
   });
 
 }

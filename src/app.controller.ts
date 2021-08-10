@@ -29,8 +29,7 @@ export class AppController {
   }
 
   @Get("overview/:id")
-  @Render("pages/archive-overview")
-  async archiveOverview(@Param("id") id: number) {
-    return { archive: await this.archiveBookService.findOne(id) };
+  async archiveOverview(@Res() res: Response, @Param("id") id: number) {
+    return res.render("pages/archive-overview", { archive: await this.archiveBookService.findOne(id) });
   }
 }

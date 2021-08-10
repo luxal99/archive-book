@@ -17,11 +17,12 @@
     <title>Archive overview</title>
 </head>
 <body>
-<div class="wrapper">
+<div class="wrapper" id="body">
     <div class="container">
 
         <% archive.createdDate = new Date(archive.createdDate) %>
-        <h4 class="text-right fw-bold" style="background-color: #f1f1f1;padding: 1em"><%= archive.createdDate.getDate() + '.' + Number.parseInt(archive.createdDate.getMonth() + 1) + '.' + archive.createdDate.getUTCFullYear() %></h4>
+        <h4 class="text-right fw-bold"
+            style="background-color: #f1f1f1;padding: 1em"><%= archive.createdDate.getDate() + '.' + Number.parseInt(archive.createdDate.getMonth() + 1) + '.' + archive.createdDate.getUTCFullYear() %></h4>
         <h1><%= archive.title %></h1>
         <h3><b>Broj police/ Fascikla: </b><%= archive.shelfNo %> /<%= archive.idLocation.name %> </h3>
         <h3><b>Oznaka: </b><%= archive.idMark.name %> </h3>
@@ -39,7 +40,8 @@
                         <h4> <%= archive.listOfDocuments[i].name; %> </h4>
                     </div>
                     <div class="col-4 text-right">
-                        <button class="btn " style="color: #ff4a4a">
+                        <button class="btn" onclick="deleteDocument(`<%= archive.listOfDocuments[i].id %>`)"
+                                style="color: #ff4a4a;pointer-events: all">
                             <i class="fa fa-trash" aria-hidden="true"></i>
                         </button>
                         <a style="color: #4BB543" href='http://localhost:8080<%= archive.listOfDocuments[i].uri %>'
@@ -54,5 +56,7 @@
 
     </div>
 </div>
+<script src="/js/global.js"></script>
+<script src="/js/archiveBook.js"></script>
 </body>
 </html>
