@@ -39,10 +39,10 @@
 }
 
 .ab-card {
-    border: 1px solid #00c3f6;
+    border-radius: 8px;
     cursor: pointer;
     margin: .25em;
-    padding: 5em;
+    padding: 2em;
     -webkit-transition: .3s linear;
 }
 

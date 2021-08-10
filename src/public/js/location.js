@@ -1,3 +1,4 @@
+
 async function update() {
   await httpRequest(API + "location", "PUT", JSON.stringify({
     id: document.getElementById("idLocation").value,

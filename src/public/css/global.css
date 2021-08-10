@@ -24,8 +24,12 @@ h6 {
     font-size: 12px
 }
 
-h2, h3, h4, h5,h6 {
+h2, h3, h4, h5,h6,label {
     font-family: 'Work Sans', sans-serif;
+}
+label{
+    font-weight: bold;
+    color: #999;
 }
 
 .text-right {
