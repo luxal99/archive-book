@@ -1,18 +1,3 @@
-const API = "https://archive-book.luxal.dev/";
-
-function httpRequest(url, method, body, callBack) {
-  fetch(url, {
-    method: method,
-    headers: {
-      "Accept": "application/json",
-      "Content-Type": "application/json",
-    },
-    body: body ? body : {},
-  }).then(() => {
-    callBack();
-  });
-};
-
 function update() {
   httpRequest(API + "location", "PUT", JSON.stringify({
     id: document.getElementById("idLocation").value,
@@ -23,14 +8,15 @@ function update() {
 
 }
 
-function addLocation() {
-  httpRequest(API + "location", "POST", JSON.stringify({ name: document.getElementById("locationName").value }), () => {
+async function addLocation() {
+  await httpRequest(API + "location", "POST", JSON.stringify({ name: document.getElementById("locationName").value }), async () => {
     alert("Successfully created");
+    await refreshData();
   });
 }
 
-function deleteLocation(idLocation) {
-  fetch(API + `location/${idLocation}`, {
+async function deleteLocation(idLocation) {
+  await fetch(API + `location/${idLocation}`, {
     method: "DELETE",
     mode: "cors",
     headers: {
@@ -38,4 +24,6 @@ function deleteLocation(idLocation) {
     },
     body: null,
   });
+
+  await refreshData();
 }

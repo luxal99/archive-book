@@ -1,6 +1,5 @@
-
-function updateMark() {
-  httpRequest(API + "mark", "PUT", JSON.stringify({
+async function updateMark() {
+  await httpRequest(API + "mark", "PUT", JSON.stringify({
     id: getValueByID("idMark"),
     name: getValueByID("editMarkName"),
     idLocation: { id: getValueByID("editIdLocation") },
@@ -10,8 +9,8 @@ function updateMark() {
 
 }
 
-function addMark() {
-  httpRequest(API + "mark", "POST", JSON.stringify(
+async function addMark() {
+  await httpRequest(API + "mark", "POST", JSON.stringify(
     {
       name: document.getElementById("markName").value,
       idLocation: { id: getValueByID("idLocation") },
@@ -21,8 +20,8 @@ function addMark() {
   });
 }
 
-function deleteMark(idMark) {
-  fetch(API + `mark/${idLocation}`, {
+async function deleteMark(idMark) {
+  await fetch(API + `mark/${idMark}`, {
     method: "DELETE",
     mode: "cors",
     headers: {
@@ -30,6 +29,8 @@ function deleteMark(idMark) {
     },
     body: null,
   });
+
+  await refreshData();
 }
 
 

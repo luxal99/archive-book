@@ -13,7 +13,7 @@ function setValueToInput(elementId, models) {
   }
 }
 
-function httpRequest(url, method, body, callBack) {
+async function httpRequest(url, method, body, callBack) {
   fetch(url, {
     method: method,
     headers: {
@@ -21,7 +21,20 @@ function httpRequest(url, method, body, callBack) {
       "Content-Type": "application/json",
     },
     body: body ? body : {},
-  }).then(() => {
+  }).then(async () => {
     callBack();
+    await refreshData();
   });
 };
+
+async function refreshData() {
+  const response = await fetch(API, {
+    method: "GET",
+    mode: "cors",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+
+  document.getElementById("body").innerHTML = await response.text();
+}
