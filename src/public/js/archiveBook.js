@@ -36,8 +36,8 @@ async function uploadDocuments(idArchiveBook) {
       body: formData,
     });
 
-    await refreshOverviewData();
   }
+  await refreshOverviewData();
 }
 
 function openArchiveBookOverview(archiveBookID) {
