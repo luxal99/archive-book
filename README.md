@@ -37,6 +37,23 @@ CREATE TABLE `mark`
     CONSTRAINT `FK_f55b6a6f7bf7aa22c9b866aaa95` FOREIGN KEY (`id_location`) REFERENCES `location` (`id`)
 );
 
+create table archive_book
+(
+    id           int auto_increment
+        primary key,
+    created_date timestamp default CURRENT_TIMESTAMP null,
+    title        varchar(255) not null,
+    note         varchar(10240) null,
+    id_mark      int          not null,
+    id_location  int          not null,
+    shelfNo      varchar(255) not null,
+    constraint FK_559288b31d8b88f933fc3fd513f
+        foreign key (id_location) references location (id),
+    constraint FK_f1579be39e8673f41cca5a0b92a
+        foreign key (id_mark) references mark (id)
+);
+
+
 ```
 
 1. Setup your local credentials for .evn
@@ -55,7 +72,8 @@ src/server/constant/constant.ts
 2. Path should include this part
 
 ```
-Absolute-path-to-project-folder/src/public/documents/...
+UPLOAD_PATH=Absolute-path-to-project-folder/src/public/documents/...
+DELETE_PATH=Absolute-path-to-project-folder/src/public...
 ```
 
 ### After this steps you should install npm packages

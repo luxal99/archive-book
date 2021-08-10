@@ -24,10 +24,11 @@ h6 {
     font-size: 12px
 }
 
-h2, h3, h4, h5,h6,label {
+h2, h3, h4, h5, h6, label {
     font-family: 'Work Sans', sans-serif;
 }
-label{
+
+label {
     font-weight: bold;
     color: #999;
 }
@@ -45,7 +46,19 @@ label{
 .default-btn:hover {
     color: #999;
 }
-.divider{
+
+.divider {
     height: 1px;
     background-color: #e3e3e3;
+}
+
+::-webkit-scrollbar {
+
+    width: 10px;
+    background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 8px;
+    background-color: #91EAE4;
 }
