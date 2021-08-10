@@ -26,6 +26,8 @@ async function create() {
 }
 
 async function uploadDocuments(idArchiveBook) {
+  let progress = 0;
+  let increment = 0;
   const files = document.getElementById("document-upload").files;
   for (const file of files) {
     const formData = new FormData();
@@ -35,6 +37,10 @@ async function uploadDocuments(idArchiveBook) {
       method: "POST",
       body: formData,
     });
+
+    increment++;
+    progress = (files.length / increment) * 100;
+    document.getElementById("progress").setAttribute("aria-valuenow", JSON.stringify(progress));
 
   }
   await refreshOverviewData();
