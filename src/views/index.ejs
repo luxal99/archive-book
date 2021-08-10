@@ -286,7 +286,6 @@
   if (localStorage.getItem("lastActiveTab")) {
     setTimeout(() => {
       const id = localStorage.getItem("lastActiveTab");
-      console.log(document.getElementById(id));
       document.getElementById(id).click();
     }, 100);
   }
