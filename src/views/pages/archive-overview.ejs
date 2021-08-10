@@ -28,6 +28,7 @@
         <h3><b>Oznaka: </b><%= archive.idMark.name %> </h3>
         <h3><b>Dokumenti</b></h3>
         <h4><b>Količina: </b><%= archive.listOfDocuments.length %></h4>
+        <p><%= archive.note %></p>
         <% for (let i = 0; i < archive.listOfDocuments.length ; i++) { %>
             <div class="location-item">
                 <div class="row">
