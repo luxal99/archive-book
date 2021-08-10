@@ -36,15 +36,15 @@
         <% for (let i = 0; i < archive.listOfDocuments.length ; i++) { %>
             <div class="location-item">
                 <div class="row">
-                    <div class="col-2">
+                    <div class="col-sm-2">
                         <h6><b>ID</b></h6>
                         <h4> <%= archive.listOfDocuments[i].id; %> </h4>
                     </div>
-                    <div class="col-6">
+                    <div class="col-sm-6">
                         <h6><b>Name</b></h6>
                         <h4> <%= archive.listOfDocuments[i].name; %> </h4>
                     </div>
-                    <div class="col-4 text-right">
+                    <div class="col-sm-4 text-right">
                         <button class="btn" onclick="deleteDocument(`<%= archive.listOfDocuments[i].id %>`)"
                                 style="color: #ff4a4a;pointer-events: all">
                             <i class="fa fa-trash" aria-hidden="true"></i>

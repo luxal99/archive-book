@@ -1,13 +1,4 @@
-const API = "http://localhost:8080/";
-
-if (localStorage.getItem("lastActiveTab")) {
-  setTimeout(() => {
-    const id = localStorage.getItem("lastActiveTab");
-    console.log(document.getElementById(id));
-    document.getElementById(id).click();
-  }, 100);
-}
-
+const API = "https://archive-book.luxal.dev/";
 function show(elementId) {
   document.getElementById(elementId).style.display = "block";
 }
