@@ -6,7 +6,7 @@ async function updateMark() {
   }), async () => {
     rememberTab();
     alert("Successfully updated");
-    await refreshData();
+    location.reload();
   });
 
 }
@@ -18,9 +18,9 @@ async function addMark() {
       idLocation: { id: getValueByID("idLocation") },
     },
   ), async () => {
-    alert("Successfully created");
-    await refreshData();
     rememberTab();
+    alert("Successfully created");
+    location.reload();
   });
 }
 
@@ -33,8 +33,8 @@ async function deleteMark(idMark) {
     },
     body: null,
   });
-  await refreshData();
   rememberTab();
+  location.reload();
 }
 
 

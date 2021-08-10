@@ -1,6 +1,3 @@
-
-
-
 async function create() {
   const archiveBookForm = document.getElementById("archive-book-form").elements;
 
@@ -25,6 +22,7 @@ async function create() {
   const savedArchiveBook = await response.json();
   await uploadDocuments(savedArchiveBook.id);
   rememberTab();
+  location.reload();
 }
 
 async function uploadDocuments(idArchiveBook) {
@@ -55,7 +53,6 @@ async function deleteDocument(idDocument) {
     body: null,
   }).then(async () => {
     await refreshOverviewData();
-
   });
 }
 
@@ -69,6 +66,6 @@ async function deleteArchive(idArchive) {
     body: null,
   }).then(async () => {
     await refreshData();
-    rememberTab();
+    location.reload();
   });
 }

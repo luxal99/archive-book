@@ -1,9 +1,11 @@
 const API = "http://localhost:8080/";
+
 if (localStorage.getItem("lastActiveTab")) {
   setTimeout(() => {
-    console.log(localStorage.getItem("lastActiveTab"));
-    document.getElementById(localStorage.getItem("lastActiveTab")).click();
-  }, 200);
+    const id = localStorage.getItem("lastActiveTab");
+    console.log(document.getElementById(id));
+    document.getElementById(id).click();
+  }, 100);
 }
 
 function show(elementId) {
