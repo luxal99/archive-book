@@ -16,16 +16,17 @@ async function create() {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(body),
-  }).catch(() => {
   });
 
   const savedArchiveBook = await response.json();
-  await uploadDocuments(savedArchiveBook.id);
+  await uploadDocuments(savedArchiveBook.id, () => {
+    location.reload();
+  });
   rememberTab();
   location.reload();
 }
 
-async function uploadDocuments(idArchiveBook) {
+async function uploadDocuments(idArchiveBook, callBack) {
   let progress = 0;
   let increment = 0;
   const files = document.getElementById("document-upload").files;
@@ -43,7 +44,7 @@ async function uploadDocuments(idArchiveBook) {
     document.getElementById("progress").style.width = `${progress}%`;
 
     if (progress === 100) {
-      document.getElementById("success-btn").style.display = "block";
+      callBack();
     }
   }
 }

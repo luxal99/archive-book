@@ -79,8 +79,11 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" id="success-btn" onclick="completeUpload()" class="btn btn-success" data-bs-dismiss="modal">Done</button>
-                        <button type="button" class="btn default-btn" onclick="uploadDocuments(`<%= archive.id %>`)">
+                        <button type="button" id="success-btn" onclick="completeUpload()" class="btn btn-success"
+                                data-bs-dismiss="modal">Done
+                        </button>
+                        <button type="button" class="btn default-btn"
+                                onclick="uploadDocuments(`<%= archive.id %>`,()=>{document.getElementById('success-btn').style.display = 'block';})">
                             <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload
                         </button>
                     </div>

@@ -6,9 +6,8 @@ import { FileInterceptor } from "@nestjs/platform-express";
 import { diskStorage } from "multer";
 import { extname } from "path";
 import { Request, Response } from "express";
-import { DELETE_PATH, UPLOAD_PATH } from "../../constant/constant";
+import { UPLOAD_PATH } from "../../constant/constant";
 import { ArchiveBookService } from "../archive-book/archive-book.service";
-import * as fs from "fs";
 
 @Controller("document")
 export class DocumentController extends GenericController<Document> {
@@ -43,8 +42,7 @@ export class DocumentController extends GenericController<Document> {
   @Delete("/:id")
   async delete(@Req() req: Request, @Param("id") id: number, @Res() res: Response) {
     try {
-      const documentForDelete = await this.documentService.findOne(id);
-      fs.unlinkSync(DELETE_PATH + documentForDelete.uri);
+      await this.documentService.deleteFile(id);
       await this.documentService.delete(id).then(() => {
         res.sendStatus(HttpStatus.OK);
       });
