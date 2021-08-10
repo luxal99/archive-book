@@ -7,10 +7,12 @@
     min-height: 100vh;
     padding: 10em;
 }
+
 .container {
     background-color: #fff;
     padding: 5em;
 }
+
 .custom-upload {
     padding: 4em 3em;
     cursor: pointer;
@@ -19,6 +21,11 @@
     border: 2px dashed #f1f1f1;
     text-align: center;
 }
+
+#success-btn {
+    display: none;
+}
+
 @media screen and (max-width: 570px) {
     .wrapper {
         padding: 5em 1em;

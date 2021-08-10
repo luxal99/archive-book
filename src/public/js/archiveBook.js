@@ -39,10 +39,16 @@ async function uploadDocuments(idArchiveBook) {
     });
 
     increment++;
-    progress = (files.length / increment) * 100;
-    document.getElementById("progress").setAttribute("aria-valuenow", JSON.stringify(progress));
+    progress = (increment / files.length) * 100;
+    document.getElementById("progress").style.width = `${progress}%`;
 
+    if (progress === 100) {
+      document.getElementById("success-btn").style.display = "block";
+    }
   }
+}
+
+async function completeUpload() {
   await refreshOverviewData();
 }
 
