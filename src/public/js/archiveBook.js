@@ -35,6 +35,8 @@ async function uploadDocuments(idArchiveBook) {
       method: "POST",
       body: formData,
     });
+
+    await refreshOverviewData();
   }
 }
 
