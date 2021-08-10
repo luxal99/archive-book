@@ -54,3 +54,16 @@ async function deleteDocument(idDocument) {
     await refreshOverviewData();
   });
 }
+
+async function deleteArchive(idArchive) {
+  await fetch(API + `archive-book/${idArchive}`, {
+    method: "DELETE",
+    mode: "cors",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: null,
+  }).then(async () => {
+    await refreshData();
+  });
+}

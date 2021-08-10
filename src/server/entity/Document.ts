@@ -16,7 +16,8 @@ export class Document {
   @ManyToOne(
     () => ArchiveBook,
     (archiveBook) => archiveBook.listOfDocuments,
-    { onDelete: "NO ACTION", onUpdate: "NO ACTION" },
+    { onDelete: "CASCADE", onUpdate: "CASCADE" },
+
   )
   @JoinColumn([{ name: "id_archive_book", referencedColumnName: "id" }])
   public idArchiveBook: ArchiveBook;

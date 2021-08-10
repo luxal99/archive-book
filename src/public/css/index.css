@@ -53,6 +53,18 @@
     background: #7F7FD5; /* fallback for old browsers */
 }
 
+.overview-btn {
+    color: #7F7FD5;
+}
+
+.delete-btn {
+    color: #ff4545;
+}
+
+.ab-card:hover .overview-btn  {
+    color: #fff;
+}
+
 @media screen and (max-width: 570px) {
     .wrapper {
         padding: 5em 1em;

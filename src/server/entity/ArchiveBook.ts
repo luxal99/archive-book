@@ -27,7 +27,7 @@ export class ArchiveBook {
 
   @OneToMany(
     () => Document,
-    (document) => document.idArchiveBook,
+    (document) => document.idArchiveBook
   )
   public listOfDocuments: Document[];
 
