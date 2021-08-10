@@ -1,3 +1,11 @@
+const API = "http://localhost:8080/";
+if (localStorage.getItem("lastActiveTab")) {
+  setTimeout(() => {
+    console.log(localStorage.getItem("lastActiveTab"));
+    document.getElementById(localStorage.getItem("lastActiveTab")).click();
+  }, 200);
+}
+
 function show(elementId) {
   document.getElementById(elementId).style.display = "block";
 }
@@ -48,4 +56,9 @@ async function refreshOverviewData() {
   });
 
   document.getElementById("body").innerHTML = await response.text();
+}
+
+function rememberTab() {
+  const element = document.querySelectorAll(".active");
+  localStorage.setItem("lastActiveTab", element[0].id);
 }

@@ -4,6 +4,7 @@ async function updateMark() {
     name: getValueByID("editMarkName"),
     idLocation: { id: getValueByID("editIdLocation") },
   }), async () => {
+    rememberTab();
     alert("Successfully updated");
     await refreshData();
   });
@@ -19,6 +20,7 @@ async function addMark() {
   ), async () => {
     alert("Successfully created");
     await refreshData();
+    rememberTab();
   });
 }
 
@@ -32,6 +34,7 @@ async function deleteMark(idMark) {
     body: null,
   });
   await refreshData();
+  rememberTab();
 }
 
 

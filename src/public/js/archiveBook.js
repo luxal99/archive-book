@@ -1,4 +1,5 @@
-const API = "http://localhost:8080/";
+
+
 
 async function create() {
   const archiveBookForm = document.getElementById("archive-book-form").elements;
@@ -23,6 +24,7 @@ async function create() {
 
   const savedArchiveBook = await response.json();
   await uploadDocuments(savedArchiveBook.id);
+  rememberTab();
 }
 
 async function uploadDocuments(idArchiveBook) {
@@ -39,6 +41,7 @@ async function uploadDocuments(idArchiveBook) {
 }
 
 function openArchiveBookOverview(archiveBookID) {
+  rememberTab();
   location.href = `http://localhost:8080/overview/${archiveBookID}`;
 }
 
@@ -52,6 +55,7 @@ async function deleteDocument(idDocument) {
     body: null,
   }).then(async () => {
     await refreshOverviewData();
+
   });
 }
 
@@ -65,5 +69,6 @@ async function deleteArchive(idArchive) {
     body: null,
   }).then(async () => {
     await refreshData();
+    rememberTab();
   });
 }
