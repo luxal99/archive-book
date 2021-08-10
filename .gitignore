@@ -33,3 +33,7 @@ lerna-debug.log*
 !.vscode/launch.json
 !.vscode/extensions.json
 /src/public/documents/
+
+src/main.ts
+
+.env
