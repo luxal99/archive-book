@@ -20,11 +20,28 @@
 <div class="wrapper">
     <div class="container">
 
-        <% archive.createdDate = new Date(archive.createdDate); %>
+        <%
+        archive.createdDate = new Date(archive.createdDate);
+        archive.expirationDate = new Date(archive.expirationDate);
+        %>
+        <% if(archive.status === "ACTIVE"){ %>
+            <div class="text-right">
+                <button class="btn btn-danger" onclick="closeArchive(`<%= archive.id %>`)">Close archive</button>
+            </div>
+        <% } %>
+        <% if(archive.status === "CLOSED"){ %>
+            <div class="text-right">
+                <h3 style="color: darkred">Closed</h3>
+            </div>
+        <% } %>
         <div class="inline">
             <div class="m-2">
                 <h6 class="text-right fw-bold">Kreirano dana:</h6>
                 <h4 class="text-right "><%= archive.createdDate.getDate() + "." + Number.parseInt(archive.createdDate.getMonth() + 1) + "." + archive.createdDate.getUTCFullYear(); %></h4>
+            </div>
+            <div class="m-2">
+                <h6 class="text-right fw-bold">Važi do:</h6>
+                <h4 class="text-right "><%= archive.expirationDate.getDate() + "." + Number.parseInt(archive.expirationDate.getMonth() + 1) + "." + archive.expirationDate.getUTCFullYear(); %></h4>
             </div>
             <div class="m-2">
                 <h6 class="text-right fw-bold">Za godine:</h6>

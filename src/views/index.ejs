@@ -294,8 +294,9 @@
                             <h4><%= listOfArchiveBooks[i].title %></h4>
                             <div class="divider"></div>
                             <% listOfArchiveBooks[i].createdDate = new Date(listOfArchiveBooks[i].createdDate) %>
+                            <% listOfArchiveBooks[i].expirationDate = new Date(listOfArchiveBooks[i].expirationDate) %>
                             <h5 class="text-right m-1">
-                                <b><%= listOfArchiveBooks[i].createdDate.getDate() + '.' + Number.parseInt(listOfArchiveBooks[i].createdDate.getMonth() + 1) + '.' + listOfArchiveBooks[i].createdDate.getUTCFullYear() %></b>
+                                <b><%= listOfArchiveBooks[i].createdDate.getDate() + '.' + Number.parseInt(listOfArchiveBooks[i].createdDate.getMonth() + 1) + '.' + listOfArchiveBooks[i].createdDate.getUTCFullYear() + ' - ' + listOfArchiveBooks[i].expirationDate.getDate() + '.' + Number.parseInt(listOfArchiveBooks[i].expirationDate.getMonth() + 1) + '.' + listOfArchiveBooks[i].expirationDate.getUTCFullYear() %></b>
                             </h5>
                         </div>
                     <% } %>

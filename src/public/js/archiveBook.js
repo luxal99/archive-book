@@ -87,3 +87,13 @@ async function deleteArchive(idArchive) {
     location.reload();
   });
 }
+
+async function closeArchive(idArchive) {
+  const response = await fetch(API + `archive-book/close/${idArchive}`, {
+    method: "PUT",
+  });
+  if (response.status === 406) {
+    const messageResponse = await response.json();
+    alert(messageResponse.message);
+  }
+}
