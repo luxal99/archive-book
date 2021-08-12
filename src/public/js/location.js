@@ -1,19 +1,20 @@
-async function update() {
-  await httpRequest(API + "location", "PUT", JSON.stringify({
-    id: document.getElementById("idLocation").value,
-    name: document.getElementById("editLocationName").value,
-  }), async () => {
-    alert("Successfully updated");
-    await refreshData();
-  });
-
-}
-
-async function addLocation() {
-  await httpRequest(API + "location", "POST", JSON.stringify({ name: document.getElementById("locationName").value }), async () => {
-    alert("Successfully created");
-    await refreshData();
-  });
+async function addOrUpdateLocation() {
+  const locationForm = document.getElementById("location-form");
+  if (!locationForm.id.value) {
+    await httpRequest(API + "location", "POST", JSON.stringify({ name: locationForm.name.value }), async () => {
+      alert("Successfully created");
+      await refreshData();
+    });
+  } else {
+    await httpRequest(API + "location", "PUT", JSON.stringify(
+      {
+        id: locationForm.id.value,
+        name: locationForm.name.value,
+      }), async () => {
+      alert("Successfully updated");
+      await refreshData();
+    });
+  }
 }
 
 async function deleteLocation(idLocation) {

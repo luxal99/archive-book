@@ -17,15 +17,11 @@
     padding: 5em;
 }
 
-#form-row {
-    display: none;
-}
-
 .location-item {
     padding: 1em 0;
 }
 
-#edit-form-row, #edit-mark-row, #mark-form-row, #create {
+#location-form-row, #edit-form-row, #edit-mark-row, #mark-form-row, #create {
     display: none;
 }
 

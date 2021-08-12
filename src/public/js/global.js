@@ -21,10 +21,11 @@ function showHideCollapse(elementId, arrowIcon) {
 
 }
 
-function setValueToInput(elementId, models) {
+function setValueToInput(elementId, formId, models) {
   show(elementId);
+  const form = document.getElementById(formId);
   for (const model of models) {
-    document.getElementById(model.name).value = model.value;
+    form[model.name].value = model.value;
   }
 }
 

@@ -51,25 +51,8 @@
 
                     </div>
                     <div class="col-sm text-right">
-                        <button class="btn default-btn" onclick="show('form-row')">Add</button>
+                        <button class="btn default-btn" onclick="show('location-form-row')">Add</button>
                     </div>
-                </div>
-                <div id="edit-form-row">
-                    <form>
-                        <label>Name of location(only letters)</label>
-                        <input class="form-control" type="hidden" name="idLocation"
-                               placeholder="Name">
-                        <input class="form-control" type="text" name="name" id="editLocationName"
-                               placeholder="Name">
-                    </form>
-                    <div class="m-1 text-right">
-                        <button class="btn default-btn"
-                                onclick="update()">
-                            +
-                        </button>
-                        <button class="btn btn-danger" onclick="hide('edit-form-row')">x</button>
-                    </div>
-
                 </div>
                 <% for (var i = 0; i < listOfLocations.length ; i++) { %>
                     <div class="location-item">
@@ -88,8 +71,8 @@
                                     <i class="fa fa-trash" aria-hidden="true"></i>
                                 </button>
                                 <button class="btn " style="color: #ffa54a"
-                                        onclick="setValueToInput('edit-form-row',[{name:'editLocationName',value:`<%= listOfLocations[i].name %>`},
-                                                {name:'idLocation',value:`<%= listOfLocations[i].id %>`}])">
+                                        onclick="setValueToInput('location-form-row','location-form',[{name:'name',value:`<%= listOfLocations[i].name %>`},
+                                                {name:'id',value:`<%= listOfLocations[i].id %>`}])">
                                     <i class="fa fa-pencil-square" aria-hidden="true"></i>
                                 </button>
                             </div>
@@ -98,28 +81,17 @@
                     </div>
                 <% } %>
 
-                <div id="form-row">
-                    <form>
-                        <label>Name of
-                            <div id="form-row">
-                                <form>
-                                    <label>Name of location(only letters)</label>
-                                    <input class="form-control" type="text" name="name" id="locationName"
-                                           placeholder="Name">
-                                </form>
-                                <div class="m-1 text-right">
-                                    <button class="btn default-btn" onclick="addLocation()">+</button>
-                                    <button class="btn btn-danger" onclick="hide('form-row')">x</button>
-                                </div>
-
-                            </div>
-                            location(only letters)</label>
-                        <input class="form-control" type="text" name="name" id="locationName"
+                <div id="location-form-row">
+                    <form id="location-form">
+                        <label>Name of location(only letters)</label>
+                        <input required class="form-control" type="text" name="name" id="locationName"
+                               placeholder="Name">
+                        <input class="form-control" type="hidden" name="id"
                                placeholder="Name">
                     </form>
                     <div class="m-1 text-right">
-                        <button class="btn default-btn" onclick="addLocation()">+</button>
-                        <button class="btn btn-danger" onclick="hide('form-row')">x</button>
+                        <button class="btn default-btn" onclick="addOrUpdateLocation()">+</button>
+                        <button class="btn btn-danger" onclick="hide('location-form-row')">x</button>
                     </div>
 
                 </div>

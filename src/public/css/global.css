@@ -62,7 +62,16 @@ label {
     border-radius: 8px;
     background-color: #91EAE4;
 }
-.inline{
+
+.inline {
     display: inline-flex;
     width: 100%;
+}
+
+input:valid {
+    border: 1px solid #121212;
+}
+
+input:invalid {
+    border: 1px solid red;
 }
