@@ -2,6 +2,7 @@ import { Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColum
 import { Document } from "./Document";
 import { Location } from "./Location";
 import { Mark } from "./Mark";
+import { ArchiveBookStatusEnum } from "../enum/ArchiveBookStatusEnum";
 
 @Entity()
 export class ArchiveBook {
@@ -25,9 +26,25 @@ export class ArchiveBook {
   @Column({ nullable: false })
   shelfNo: string;
 
+  @Column({ nullable: false })
+  startYear: string;
+
+  @Column({ nullable: false })
+  expirationDate: Date;
+
+  @Column({ nullable: false })
+  endYear: string;
+
+  @Column({
+    type: "enum",
+    default: ArchiveBookStatusEnum.ACTIVE,
+    enum: ArchiveBookStatusEnum,
+  })
+  public status: ArchiveBookStatusEnum;
+
   @OneToMany(
     () => Document,
-    (document) => document.idArchiveBook
+    (document) => document.idArchiveBook,
   )
   public listOfDocuments: Document[];
 

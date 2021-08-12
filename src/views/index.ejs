@@ -95,18 +95,20 @@
 
                 <div id="form-row">
                     <form>
-                        <label>Name of <div id="form-row">
-                            <form>
-                                <label>Name of location(only letters)</label>
-                                <input class="form-control" type="text" name="name" id="locationName"
-                                       placeholder="Name">
-                            </form>
-                            <div class="m-1 text-right">
-                                <button class="btn default-btn" onclick="addLocation()">+</button>
-                                <button class="btn btn-danger" onclick="hide('form-row')">x</button>
-                            </div>
+                        <label>Name of
+                            <div id="form-row">
+                                <form>
+                                    <label>Name of location(only letters)</label>
+                                    <input class="form-control" type="text" name="name" id="locationName"
+                                           placeholder="Name">
+                                </form>
+                                <div class="m-1 text-right">
+                                    <button class="btn default-btn" onclick="addLocation()">+</button>
+                                    <button class="btn btn-danger" onclick="hide('form-row')">x</button>
+                                </div>
 
-                        </div>location(only letters)</label>
+                            </div>
+                            location(only letters)</label>
                         <input class="form-control" type="text" name="name" id="locationName"
                                placeholder="Name">
                     </form>
@@ -219,7 +221,7 @@
                                placeholder="Name">
                         <label>Number of shelf</label>
                         <input class="form-control" type="text" name="shelfNo"
-                               placeholder="Name">
+                               placeholder="Number of shelf">
 
                         <textarea class="form-control" style="margin-top: 1em" type="text" name="note"
                                   rows="3"
@@ -237,6 +239,22 @@
                                 <option value='<%= listOfMarks[x].id %>'><%= listOfMarks[x].name %></option>
                             <% } %>
                         </select>
+                        <div class="row mt-3">
+                            <div class="col">
+                                <label>Start year</label>
+                                <input class="form-control" type="text" name="startYear"
+                                       placeholder="Year">
+                            </div>
+                            <div class="col">
+                                <label>End year</label>
+                                <input class="form-control" type="text" name="endYear"
+                                       placeholder="Year">
+                            </div>
+                        </div>
+
+                        <label>Expiration date</label>
+                        <input class="form-control" type="date" name="expirationDate"
+                               placeholder="Expiration date">
                     </form>
                     <label class="custom-upload" style="margin-top: 1em">
                         <input type="file" multiple id="document-upload">

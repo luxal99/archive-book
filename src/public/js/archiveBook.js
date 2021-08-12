@@ -7,6 +7,9 @@ async function create() {
     idMark: { id: archiveBookForm.idMark.value },
     note: archiveBookForm.note.value,
     shelfNo: archiveBookForm.shelfNo.value,
+    startYear: archiveBookForm.startYear.value,
+    endYear: archiveBookForm.endYear.value,
+    expirationDate: archiveBookForm.expirationDate.value,
   };
 
   const response = await fetch(API + "archive-book", {

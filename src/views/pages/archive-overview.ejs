@@ -20,15 +20,23 @@
 <div class="wrapper">
     <div class="container">
 
-        <% archive.createdDate = new Date(archive.createdDate) %>
-        <h4 class="text-right fw-bold"
-            style="background-color: #f1f1f1;padding: 1em"><%= archive.createdDate.getDate() + '.' + Number.parseInt(archive.createdDate.getMonth() + 1) + '.' + archive.createdDate.getUTCFullYear() %></h4>
-        <h1><%= archive.title %></h1>
-        <h3><b>Broj police/ Fascikla: </b><%= archive.shelfNo %> /<%= archive.idLocation.name %> </h3>
-        <h3><b>Oznaka: </b><%= archive.idMark.name %> </h3>
-        <h3><b>Dokumenti</b></h3>
-        <h4><b>Količina: </b><%= archive.listOfDocuments.length %></h4>
-        <p><%= archive.note %></p>
+        <% archive.createdDate = new Date(archive.createdDate); %>
+        <div class="inline">
+            <div class="m-2">
+                <h6 class="text-right fw-bold">Kreirano dana:</h6>
+                <h4 class="text-right "><%= archive.createdDate.getDate() + "." + Number.parseInt(archive.createdDate.getMonth() + 1) + "." + archive.createdDate.getUTCFullYear(); %></h4>
+            </div>
+            <div class="m-2">
+                <h6 class="text-right fw-bold">Za godine:</h6>
+                <h4 class="text-right "><%= archive.startYear + '-' + archive.endYear %></h4>
+            </div>
+        </div>
+        <h1><%= archive.title; %></h1>
+        <h3><b>Broj police/ Fascikla: </b><%= archive.shelfNo; %> /<%= archive.idLocation.name; %> </h3>
+        <h3><b>Oznaka: </b><%= archive.idMark.name; %> </h3>
+        <h3><b></b></h3>
+        <h4><b>Količina: </b><%= archive.listOfDocuments.length; %></h4>
+        <p><%= archive.note; %></p>
         <button type="button" class="btn default-btn" style="margin: 1em 0" data-bs-toggle="modal"
                 data-bs-target="#exampleModal">
             <i class="fa fa-cloud-upload" aria-hidden="true"></i> Add
