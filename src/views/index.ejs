@@ -19,7 +19,12 @@
 <body id="body">
 <div class="wrapper">
     <div class="container">
-
+        <div class="collapse" id="collapseExample">
+            <div class="card card-body">
+                Some placeholder content for the collapse component. This panel is hidden by default but revealed when
+                the user activates the relevant trigger.
+            </div>
+        </div>
         <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
             <li class="nav-item" role="presentation">
                 <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#location"
@@ -205,9 +210,9 @@
                 </div>
             </div>
             <div class="tab-pane fade" id="document" role="tabpanel" aria-labelledby="pills-profile-tab">
-                <div class="row">
+                <div class="row m-1">
                     <div class="col">
-                        <h3><b>Archive book</b></h3>
+                        <h3><b>Active archive books</b></h3>
                     </div>
                     <div class="col text-right">
                         <button class="btn default-btn" onclick="show('create')">Add</button>
@@ -301,8 +306,50 @@
                         </div>
                     <% } %>
                 </div>
-
-                <!-- Modal -->
+                <div class="collapse-div">
+                    <div class="row">
+                        <div class="col">
+                            <h4 class="m-2">Show closed archive books</h4>
+                        </div>
+                        <div class="col text-right">
+                            <button class="btn" onclick="showHideCollapse('closed-archive-books','collpase-icon')"><i
+                                        class="fa fa-chevron-left"
+                                        id="collpase-icon"
+                                        aria-hidden="true"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div id="closed-archive-books">
+                    <h3 style="margin-left: 1em"><b>Closed archive books</b></h3>
+                    <div class="row">
+                        <% for(let i = 0; i < listOfClosedArchiveBooks.length; i++) { %>
+                            <div class="col-12 ab-card">
+                                <div class="text-right">
+                                    <button class="btn delete-btn"
+                                            onclick="deleteArchive(`<%= listOfClosedArchiveBooks[i].id %>`)"><i
+                                                class="fa fa-times" aria-hidden="true"></i></button>
+                                    <button class="btn overview-btn"
+                                            onclick="openArchiveBookOverview(`<%= listOfClosedArchiveBooks[i].id %>`)">
+                                        <i
+                                                class="fa fa-eye" aria-hidden="true"></i>
+                                    </button>
+                                </div>
+                                <h4><%= listOfClosedArchiveBooks[i].title %></h4>
+                                <div class="divider"></div>
+                                <% listOfClosedArchiveBooks[i].createdDate = new Date(listOfClosedArchiveBooks[i].createdDate) %>
+                                <% listOfClosedArchiveBooks[i].expirationDate = new Date(listOfClosedArchiveBooks[i].expirationDate) %>
+                                <h5 class="text-right m-1">
+                                    <b><%= listOfClosedArchiveBooks[i].createdDate.getDate() + '.' + Number.parseInt(listOfClosedArchiveBooks[i].createdDate.getMonth() + 1)
+                                        + '.' + listOfClosedArchiveBooks[i].createdDate.getUTCFullYear() + ' - '
+                                        + listOfClosedArchiveBooks[i].expirationDate.getDate() + '.' +
+                                        Number.parseInt(listOfClosedArchiveBooks[i].expirationDate.getMonth() + 1)
+                                        + '.' + listOfClosedArchiveBooks[i].expirationDate.getUTCFullYear() %></b>
+                                </h5>
+                            </div>
+                        <% } %>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

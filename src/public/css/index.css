@@ -61,8 +61,23 @@
     color: #ff4545;
 }
 
-.ab-card:hover .overview-btn  {
+.ab-card:hover .overview-btn {
     color: #fff;
+}
+
+.collapse-div {
+    padding: 1em;
+    margin: 1em;
+    background-color: #f1f1f1;
+    border-radius: 8px;
+}
+
+#closed-archive-books {
+    display: none;
+}
+
+i {
+    -webkit-transition: .3s linear;
 }
 
 @media screen and (max-width: 570px) {

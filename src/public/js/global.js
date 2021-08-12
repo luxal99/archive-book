@@ -1,10 +1,24 @@
 const API = "http://localhost:8080/";
+
 function show(elementId) {
   document.getElementById(elementId).style.display = "block";
 }
 
 function hide(elementId) {
   document.getElementById(elementId).style.display = "none";
+}
+
+function showHideCollapse(elementId, arrowIcon) {
+  const element = document.getElementById(elementId);
+  const arrow = document.getElementById(arrowIcon);
+  if (element.style.display === "none" || element.style.display === "") {
+    element.style.display = "block";
+    arrow.style.transform = "rotate(-90deg)";
+  } else {
+    element.style.display = "none";
+    arrow.style.transform = "rotate(0deg)";
+  }
+
 }
 
 function setValueToInput(elementId, models) {

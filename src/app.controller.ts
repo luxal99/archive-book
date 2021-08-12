@@ -19,7 +19,8 @@ export class AppController {
       listOfLocations: await this.locationService.findAll(),
       listOfMarks: await this.markService.findAll(),
       listOfDocuments: await this.documentService.findAll(),
-      listOfArchiveBooks: await this.archiveBookService.findAll(),
+      listOfArchiveBooks: await this.archiveBookService.findActiveArchiveBooks(),
+      listOfClosedArchiveBooks: await this.archiveBookService.findClosedArchiveBooks(),
     });
   }
 

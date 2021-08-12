@@ -54,10 +54,12 @@
         <h3><b></b></h3>
         <h4><b>Količina: </b><%= archive.listOfDocuments.length; %></h4>
         <p><%= archive.note; %></p>
-        <button type="button" class="btn default-btn" style="margin: 1em 0" data-bs-toggle="modal"
-                data-bs-target="#exampleModal">
-            <i class="fa fa-cloud-upload" aria-hidden="true"></i> Add
-        </button>
+        <% if(archive.status === "ACTIVE"){ %>
+            <button type="button" class="btn default-btn" style="margin: 1em 0" data-bs-toggle="modal"
+                    data-bs-target="#exampleModal">
+                <i class="fa fa-cloud-upload" aria-hidden="true"></i> Add
+            </button>
+        <% } %>
         <% for (let i = 0; i < archive.listOfDocuments.length ; i++) { %>
             <div class="location-item">
                 <div class="row">
@@ -70,10 +72,6 @@
                         <h4> <%= archive.listOfDocuments[i].name; %> </h4>
                     </div>
                     <div class="col-sm-4 text-right">
-                        <button class="btn" onclick="deleteDocument(`<%= archive.listOfDocuments[i].id %>`)"
-                                style="color: #ff4a4a;pointer-events: all">
-                            <i class="fa fa-trash" aria-hidden="true"></i>
-                        </button>
                         <a style="color: #4BB543" href='http://localhost:8080<%= archive.listOfDocuments[i].uri %>'
                            download=<%= archive.listOfDocuments[i].name %>>
                             <i class="fa fa-download" aria-hidden="true"></i>

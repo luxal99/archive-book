@@ -1,4 +1,4 @@
-import { Controller, Delete, HttpStatus, Param, Put, Req, Res } from "@nestjs/common";
+import { Controller, Delete, Get, HttpStatus, Param, Put, Req, Res } from "@nestjs/common";
 import { ArchiveBookService } from "./archive-book.service";
 import { GenericController } from "../../util/generic/generic.controller";
 import { ArchiveBook } from "../../entity/ArchiveBook";
