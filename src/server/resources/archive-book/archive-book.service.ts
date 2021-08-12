@@ -3,6 +3,7 @@ import { GenericService } from "../../util/generic/generic.service";
 import { ArchiveBook } from "../../entity/ArchiveBook";
 import { ArchiveBookRepository } from "../../repository/ArchiveBookRepository";
 import { ArchiveBookStatusEnum } from "../../enum/ArchiveBookStatusEnum";
+import * as moment from "moment";
 
 @Injectable()
 export class ArchiveBookService extends GenericService<ArchiveBook> {
@@ -12,10 +13,11 @@ export class ArchiveBookService extends GenericService<ArchiveBook> {
   }
 
   async findActiveArchiveBooks() {
-    return await this.archiveBookRepository.find({
-      relations: this.getRelations,
-      where: { status: ArchiveBookStatusEnum.ACTIVE },
-    });
+   return await this.archiveBookRepository.find({
+     relations: this.getRelations,
+     where: { status: ArchiveBookStatusEnum.ACTIVE },
+   });
+
   }
 
   async findClosedArchiveBooks() {

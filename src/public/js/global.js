@@ -26,7 +26,12 @@ function setValueToInput(elementId, formId, models) {
   show(elementId);
   const form = document.getElementById(formId);
   for (const model of models) {
-    form[model.name].value = model.value;
+    if (model.name.toLowerCase().includes("date")) {
+      const date = new Date(model.value);
+      form[model.name].value = `${JSON.stringify(date.getUTCFullYear())}-${date.getMonth() + 1 < 10 ? `${0 + JSON.stringify(date.getMonth() + 1)}` : `${JSON.stringify(date.getMonth() + 1)}`}-${JSON.stringify(date.getDate())}`;
+    } else {
+      form[model.name].value = model.value;
+    }
   }
 }
 
@@ -72,3 +77,7 @@ function rememberTab() {
   localStorage.setItem("lastActiveTab", element[0].id);
 }
 
+function formatDate(date) {
+  date = new Date(date);
+  return (`${JSON.stringify(date.getUTCDate())}+'-'+${date.getMonth() + 1 < 10 ? `${0 + JSON.stringify(date.getMonth() + 1)}` : `${JSON.stringify(date.getMonth() + 1)}`}+${JSON.stringify(date.getDate())}`);
+}
