@@ -8,6 +8,7 @@ import { extname } from "path";
 import { Request, Response } from "express";
 import { UPLOAD_PATH } from "../../constant/constant";
 import { ArchiveBookService } from "../archive-book/archive-book.service";
+import { fileFilter } from "src/server/util/fileFilter/fileFilter";
 
 @Controller("document")
 export class DocumentController extends GenericController<Document> {
@@ -25,6 +26,8 @@ export class DocumentController extends GenericController<Document> {
         cb(null, `${randomName}${extname(file.originalname)}`);
       },
     }),
+    fileFilter: fileFilter,
+
   }))
   async uploadFile(@Req() req: Request, @Res() res: Response, @UploadedFile() file: Express.Multer.File, @Param("id") id: number) {
     try {

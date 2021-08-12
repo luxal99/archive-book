@@ -27,13 +27,13 @@ export class ArchiveBook {
   shelfNo: string;
 
   @Column({ nullable: false })
-  startYear: string;
+  startYear: number;
 
   @Column({ nullable: false })
   expirationDate: Date;
 
   @Column({ nullable: false })
-  endYear: string;
+  endYear: number;
 
   @Column({
     type: "enum",

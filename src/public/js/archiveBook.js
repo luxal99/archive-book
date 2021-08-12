@@ -1,3 +1,28 @@
+const fileUploadList = [];
+const supportedFileExtensions = ["doc", "docx", "csv", "pdf", "xls", "xlsx"];
+
+function addFiles() {
+  const files = document.getElementById("document-upload").files;
+
+  for (const file of files) {
+    if (supportedFileExtensions.find((item) => item === getFileExtension(file.name)) !== undefined) {
+      fileUploadList.push(file);
+    } else {
+      alert(`Type of ${file.name} file is not supported`);
+    }
+  }
+  displayFileUploadList();
+}
+
+function displayFileUploadList() {
+  const element = document.getElementById("fileUploadList");
+  let output = "";
+  for (const file of fileUploadList) {
+    output += `<li>${file.name}</li>`;
+  }
+  element.innerHTML = output;
+}
+
 async function create() {
   const archiveBookForm = document.getElementById("archive-book-form").elements;
 
@@ -12,8 +37,8 @@ async function create() {
     expirationDate: archiveBookForm.expirationDate.value,
   };
 
-
-  if (isArchiveBookFormValid(Object.entries(body).map((entry) => (entry[0])), archiveBookForm)) {
+  if (isArchiveBookFormValid(Object.entries(body).map((entry) => (entry[0])).filter((item) => item !== "note")
+    , archiveBookForm)) {
     const response = await fetch(API + "archive-book", {
       method: "POST",
       headers: {
@@ -37,6 +62,7 @@ async function uploadDocuments(idArchiveBook, callBack) {
   let progress = 0;
   let increment = 0;
   const files = document.getElementById("document-upload").files;
+
   for (const file of files) {
     const formData = new FormData();
     formData.append("document", file);
@@ -110,5 +136,8 @@ function isArchiveBookFormValid(archiveBookFormNames, archiveBookForm) {
     }
     return isValid;
   }
+}
 
+function getFileExtension(fileName) {
+  return fileName.split(".")[1];
 }
