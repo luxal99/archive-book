@@ -88,7 +88,7 @@ async function completeUpload() {
 
 function openArchiveBookOverview(archiveBookID) {
   rememberTab();
-  location.href = `http://localhost:8080/overview/${archiveBookID}`;
+  location.href = `${API}overview/${archiveBookID}`;
 }
 
 async function deleteDocument(idDocument) {
