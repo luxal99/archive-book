@@ -72,7 +72,7 @@ async function uploadDocuments(idArchiveBook, callBack) {
     });
 
     increment++;
-    progress = (increment / files.length) * 100;
+    progress = (increment / fileUploadList.length) * 100;
     document.getElementById("progress").style.width = `${progress}%`;
 
     if (progress === 100) {

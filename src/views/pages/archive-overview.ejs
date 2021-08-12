@@ -90,9 +90,11 @@
                     </div>
                     <div class="modal-body">
                         <label class="custom-upload" style="margin-top: 1em">
-                            <input type="file" multiple id="document-upload">
+                            <input type="file" multiple id="document-upload" onchange="addFiles()">
                             <img src="/img/upload-image-icon-png-11.jpg" width="100px" height="100px">
                         </label>
+                        <h5 class="mt-4"><b>Fajlovi za slanje</b></h5>
+                        <ul id="fileUploadList"></ul>
                     </div>
                     <div class="m-3">
                         <div class="progress">
