@@ -7,16 +7,16 @@ export class Mark {
   @PrimaryGeneratedColumn({ type: "int", name: "id" })
   public id: number;
 
-  @Column()
+  @Column({ nullable: false })
   public name: string;
 
   @OneToMany(
     () => ArchiveBook,
-    (mark) => mark.idMark
+    (mark) => mark.idMark,
   )
   public listOfArchives!: ArchiveBook[];
 
-  @Column("int", { name: "id_location" })
+  @Column("int", { name: "id_location", nullable: false })
   @ManyToOne(
     () => Location,
     (location) => location.listOfMarks,

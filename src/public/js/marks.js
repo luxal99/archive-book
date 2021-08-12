@@ -6,14 +6,16 @@ async function addOrUpdateMark() {
     idLocation: { id: markForm.idLocation.value },
   };
 
-  if (body.id === "") {
-    delete body.id;
+  for (const [k, v] of Object.entries(body)) {
+    if (!v) delete body[k];
   }
-  await httpRequest(API + "mark", markForm.id.value ? "PUT" : "POST", JSON.stringify(body), async () => {
-    rememberTab();
-    alert("Successfully created");
-    location.reload();
-  });
+  if (markForm.name && markForm.idLocation.value) {
+    await httpRequest(API + "mark", markForm.id.value ? "PUT" : "POST", JSON.stringify(body), async () => {
+      rememberTab();
+      alert("Successfully created");
+      location.reload();
+    });
+  }
 }
 
 async function deleteMark(idMark) {

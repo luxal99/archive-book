@@ -7,12 +7,18 @@ async function addOrUpdateLocation() {
   if (body.id === "") {
     delete body.id;
   }
-  await httpRequest(API + "location", locationForm.id.value ? "PUT" : "POST", JSON.stringify(body), async () => {
-    rememberTab();
-    alert("Successfully");
-    location.reload();
-  });
-
+  for (const [k, v] of Object.entries(body)) {
+    if (!v) delete body[k];
+  }
+  if (body.name) {
+    await httpRequest(API + "location", locationForm.id.value ? "PUT" : "POST", JSON.stringify(body), async () => {
+      rememberTab();
+      alert("Successfully");
+      location.reload();
+    });
+  } else {
+    alert("Fill required fields");
+  }
 }
 
 async function deleteLocation(idLocation) {
