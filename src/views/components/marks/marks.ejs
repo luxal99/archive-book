@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<div class="row">
+    <div class="col-sm">
+        <h1>Marks</h1>
+        <h3>Current marks</h3>
+    </div>
+    <div class="col-sm text-right">
+        <button class="btn default-btn" onclick="show('mark-form-row')">Add</button>
+    </div>
+</div>
+<div>
+    <% for (var j = 0; j < listOfMarks.length ; j++) { %>
+        <div class="location-item">
+            <div class="row">
+                <div class="col-2">
+                    <h6><b>ID</b></h6>
+                    <h4> <%= listOfMarks[j].id; %> </h4>
+                </div>
+                <div class="col-2">
+                    <h6><b>Name</b></h6>
+                    <h4> <%= listOfMarks[j].name; %> </h4>
+                </div>
+                <div class="col-3">
+                    <h6><b>Location</b></h6>
+                    <h4> <%= listOfMarks[j].idLocation.name; %> </h4>
+                </div>
+                <div class="col-4">
+                    <button class="btn " style="color: #ff4a4a"
+                            onclick="deleteMark((`<%= listOfMarks[j].id %>`))">
+                        <i class="fa fa-trash" aria-hidden="true"></i>
+                    </button>
+                    <button class="btn " style="color: #ffa54a"
+                            onclick="setValueToInput('mark-form-row','mark-form',[
+                                    {name:'idLocation',value:`<%= listOfMarks[j].idLocation.id %>`},
+                                    {name:'name',value:`<%= listOfMarks[j].name %>`},
+                                    {name:'id',value:`<%= listOfMarks[j].id %>`}])">
+                        <i class="fa fa-pencil-square" aria-hidden="true"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="divider"></div>
+        </div>
+    <% } %>
+</div>
+<div id="mark-form-row">
+    <form id="mark-form">
+        <label>Name of mark(only letters)</label>
+        <input class="form-control"
+               required
+               minlength="2"
+               type="text" name="name"
+               placeholder="Name">
+        <input class="form-control" type="hidden" name="id">
+        <label>Select location</label>
+        <select class="form-control" name="idLocation">
+            <% for(var x = 0; x < listOfLocations.length; x++) { %>
+                <option value='<%= listOfLocations[x].id %>'><%= listOfLocations[x].name %></option>
+            <% } %>
+        </select>
+    </form>
+    <div class="m-1 text-right">
+        <button class="btn default-btn" onclick="addOrUpdateMark()">+</button>
+        <button class="btn btn-danger" onclick="hide('mark-form-row')">x</button>
+    </div>
+
+</div>
+</body>
+</html>
