@@ -61,9 +61,8 @@ async function create() {
 async function uploadDocuments(idArchiveBook, callBack) {
   let progress = 0;
   let increment = 0;
-  const files = document.getElementById("document-upload").files;
 
-  for (const file of files) {
+  for (const file of fileUploadList) {
     const formData = new FormData();
     formData.append("document", file);
 
