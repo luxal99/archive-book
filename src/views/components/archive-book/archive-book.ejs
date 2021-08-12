@@ -88,24 +88,36 @@
 </div>
 <div class="row">
     <% for(let i = 0; i < listOfArchiveBooks.length; i++) { %>
-        <div class="col-12 ab-card">
-            <div class="text-right">
-                <button class="btn delete-btn"
-                        onclick="deleteArchive(`<%= listOfArchiveBooks[i].id; %>`)"><i
-                            class="fa fa-times" aria-hidden="true"></i></button>
-                <button class="btn overview-btn"
-                        onclick="openArchiveBookOverview(`<%= listOfArchiveBooks[i].id; %>`)"><i
-                            class="fa fa-eye" aria-hidden="true"></i>
-                </button>
-            </div>
-            <h4><%= listOfArchiveBooks[i].title; %></h4>
-            <div class="divider"></div>
-            <% listOfArchiveBooks[i].createdDate = new Date(listOfArchiveBooks[i].createdDate); %>
-            <% listOfArchiveBooks[i].expirationDate = new Date(listOfArchiveBooks[i].expirationDate); %>
-            <h5 class="text-right m-1">
-                <b><%= listOfArchiveBooks[i].createdDate.getDate() + "." + Number.parseInt(listOfArchiveBooks[i].createdDate.getMonth() + 1) + "." + listOfArchiveBooks[i].createdDate.getUTCFullYear() + " - " + listOfArchiveBooks[i].expirationDate.getDate() + "." + Number.parseInt(listOfArchiveBooks[i].expirationDate.getMonth() + 1) + "." + listOfArchiveBooks[i].expirationDate.getUTCFullYear(); %></b>
-            </h5>
+    <div class="col-12 ab-card">
+        <div class="text-right">
+            <button class="btn"
+                    onclick="setValueToInput('create','archive-book-form',[
+                            {name:'title',value:`<%= listOfArchiveBooks[i].title %>`},
+                            {name:'shelfNo',value:`<%= listOfArchiveBooks[i].shelfNo %>`},
+                            {name:'note',value:`<%= listOfArchiveBooks[i].note %>`},
+                            {name:'idLocation',value:`<%= listOfArchiveBooks[i].idLocation.id %>`},
+                            {name:'idMark',value:`<%= listOfArchiveBooks[i].idMark.id %>`},
+                            {name:'startYear',value:`<%= listOfArchiveBooks[i].startYear %>`},
+                            {name:'endYear',value:`<%= listOfArchiveBooks[i].endYear %>`},
+                            {name:'expirationDate',value:'<% listOfArchiveBooks[i].expirationDate %>'},
+                            ])"><i
+                        class="fa fa-pencil-square" aria-hidden="true"></i></button>
+            <button class="btn delete-btn"
+                    onclick="deleteArchive(`<%= listOfArchiveBooks[i].id; %>`)"><i
+                        class="fa fa-times" aria-hidden="true"></i></button>
+            <button class="btn overview-btn"
+                    onclick="openArchiveBookOverview(`<%= listOfArchiveBooks[i].id; %>`)"><i
+                        class="fa fa-eye" aria-hidden="true"></i>
+            </button>
         </div>
+        <h4><%= listOfArchiveBooks[i].title; %></h4>
+        <div class="divider"></div>
+        <% listOfArchiveBooks[i].createdDate = new Date(listOfArchiveBooks[i].createdDate); %>
+        <% listOfArchiveBooks[i].expirationDate = new Date(listOfArchiveBooks[i].expirationDate); %>
+        <h5 class="text-right m-1">
+            <b><%= listOfArchiveBooks[i].createdDate.getDate() + "." + Number.parseInt(listOfArchiveBooks[i].createdDate.getMonth() + 1) + "." + listOfArchiveBooks[i].createdDate.getUTCFullYear() + " - " + listOfArchiveBooks[i].expirationDate.getDate() + "." + Number.parseInt(listOfArchiveBooks[i].expirationDate.getMonth() + 1) + "." + listOfArchiveBooks[i].expirationDate.getUTCFullYear(); %></b>
+        </h5>
+    </div>
     <% } %>
 </div>
 <div class="collapse-div">

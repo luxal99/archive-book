@@ -10,6 +10,7 @@ export class GenericController<T> {
   @Post()
   async post(@Body() entity: T, @Res() res: Response) {
     try {
+      console.log(entity);
       res.send(await this.genericService.save(entity));
     } catch (err) {
       res.status(HttpStatus.BAD_REQUEST).send({ err });

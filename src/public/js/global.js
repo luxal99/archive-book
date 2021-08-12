@@ -22,6 +22,7 @@ function showHideCollapse(elementId, arrowIcon) {
 }
 
 function setValueToInput(elementId, formId, models) {
+
   show(elementId);
   const form = document.getElementById(formId);
   for (const model of models) {
