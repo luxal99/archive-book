@@ -1,23 +1,15 @@
-async function updateMark() {
-  await httpRequest(API + "mark", "PUT", JSON.stringify({
-    id: getValueByID("idMark"),
-    name: getValueByID("editMarkName"),
-    idLocation: { id: getValueByID("editIdLocation") },
-  }), async () => {
-    rememberTab();
-    alert("Successfully updated");
-    location.reload();
-  });
+async function addOrUpdateMark() {
+  const markForm = document.getElementById("mark-form");
+  const body = {
+    id: markForm.id.value !== undefined ? markForm.id.value : null,
+    name: markForm.name.value,
+    idLocation: { id: markForm.idLocation.value },
+  };
 
-}
-
-async function addMark() {
-  await httpRequest(API + "mark", "POST", JSON.stringify(
-    {
-      name: document.getElementById("markName").value,
-      idLocation: { id: getValueByID("idLocation") },
-    },
-  ), async () => {
+  if (body.id === "") {
+    delete body.id;
+  }
+  await httpRequest(API + "mark", markForm.id.value ? "PUT" : "POST", JSON.stringify(body), async () => {
     rememberTab();
     alert("Successfully created");
     location.reload();
@@ -35,9 +27,4 @@ async function deleteMark(idMark) {
   });
   rememberTab();
   location.reload();
-}
-
-
-function getValueByID(id) {
-  return document.getElementById(id).value;
 }
