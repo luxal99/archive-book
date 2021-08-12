@@ -3,7 +3,8 @@ import { GenericService } from "../../util/generic/generic.service";
 import { Document } from "../../entity/Document";
 import { DocumentRepository } from "../../repository/DocumentRepository";
 import * as fs from "fs";
-import { DELETE_PATH } from "../../constant/constant";
+import { DELETE_PATH } from "../../environment/local";
+
 
 @Injectable()
 export class DocumentService extends GenericService<Document> {

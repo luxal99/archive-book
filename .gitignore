@@ -37,5 +37,3 @@ lerna-debug.log*
 src/main.ts
 
 .env
-
-src/server/constant/constant.ts

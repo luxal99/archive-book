@@ -6,9 +6,9 @@ import { FileInterceptor } from "@nestjs/platform-express";
 import { diskStorage } from "multer";
 import { extname } from "path";
 import { Request, Response } from "express";
-import { UPLOAD_PATH } from "../../constant/constant";
 import { ArchiveBookService } from "../archive-book/archive-book.service";
 import { fileFilter } from "src/server/util/fileFilter/fileFilter";
+import { UPLOAD_PATH } from "../../environment/local";
 
 @Controller("document")
 export class DocumentController extends GenericController<Document> {
