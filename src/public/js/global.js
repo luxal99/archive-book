@@ -31,15 +31,15 @@ function setValueToInput(elementId, formId, models) {
 }
 
 async function httpRequest(url, method, body, callBack) {
-  fetch(url, {
+  return await fetch(url, {
     method: method,
     headers: {
       "Accept": "application/json",
       "Content-Type": "application/json",
     },
     body: body ? body : {},
-  }).then(async () => {
-    callBack();
+  }).then((response) => {
+    return response;
   });
 };
 
@@ -71,3 +71,4 @@ function rememberTab() {
   const element = document.querySelectorAll(".active");
   localStorage.setItem("lastActiveTab", element[0].id);
 }
+

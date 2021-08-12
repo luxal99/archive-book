@@ -27,6 +27,7 @@ async function create() {
   const archiveBookForm = document.getElementById("archive-book-form").elements;
 
   const body = {
+    id: archiveBookForm.id.value,
     title: archiveBookForm.title.value,
     idLocation: { id: archiveBookForm.idLocation.value },
     idMark: { id: archiveBookForm.idMark.value },
@@ -37,22 +38,17 @@ async function create() {
     expirationDate: archiveBookForm.expirationDate.value,
   };
 
+  if (!body.id) {
+    delete body.id;
+  }
   if (isArchiveBookFormValid(Object.entries(body).map((entry) => (entry[0])).filter((item) => item !== "note")
     , archiveBookForm)) {
-    const response = await fetch(API + "archive-book", {
-      method: "POST",
-      headers: {
-        "Accept": "application/json",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(body),
-    });
-    const savedArchiveBook = await response.json();
-    await uploadDocuments(savedArchiveBook.id, () => {
+    await httpRequest(API + "archive-book", body.id ? "PUT" : "POST", JSON.stringify(body)).then(async (response) => {
+      const savedArchiveBook = await response.json();
+      await uploadDocuments(savedArchiveBook.id);
+      rememberTab();
       location.reload();
     });
-    rememberTab();
-    location.reload();
   } else {
     alert("Fill all required fields");
   }
@@ -75,7 +71,7 @@ async function uploadDocuments(idArchiveBook, callBack) {
     progress = (increment / fileUploadList.length) * 100;
     document.getElementById("progress").style.width = `${progress}%`;
 
-    if (progress === 100) {
+    if (progress === 100 && callBack !== undefined) {
       callBack();
     }
   }
