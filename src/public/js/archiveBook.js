@@ -12,21 +12,25 @@ async function create() {
     expirationDate: archiveBookForm.expirationDate.value,
   };
 
-  const response = await fetch(API + "archive-book", {
-    method: "POST",
-    headers: {
-      "Accept": "application/json",
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(body),
-  });
 
-  const savedArchiveBook = await response.json();
-  await uploadDocuments(savedArchiveBook.id, () => {
+  if (isArchiveBookFormValid(Object.entries(body).map((entry) => (entry[0])), archiveBookForm)) {
+    const response = await fetch(API + "archive-book", {
+      method: "POST",
+      headers: {
+        "Accept": "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(body),
+    });
+    const savedArchiveBook = await response.json();
+    await uploadDocuments(savedArchiveBook.id, () => {
+      location.reload();
+    });
+    rememberTab();
     location.reload();
-  });
-  rememberTab();
-  location.reload();
+  } else {
+    alert("Fill all required fields");
+  }
 }
 
 async function uploadDocuments(idArchiveBook, callBack) {
@@ -96,4 +100,15 @@ async function closeArchive(idArchive) {
     const messageResponse = await response.json();
     alert(messageResponse.message);
   }
+}
+
+function isArchiveBookFormValid(archiveBookFormNames, archiveBookForm) {
+  let isValid = true;
+  for (const formControl of archiveBookFormNames) {
+    if (archiveBookForm[formControl].value === "") {
+      isValid = false;
+    }
+    return isValid;
+  }
+
 }
