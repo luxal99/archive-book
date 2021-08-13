@@ -62,21 +62,19 @@ label {
     border-radius: 8px;
     background-color: #91EAE4;
 }
+
 .collapse-div {
     padding: 1em;
     margin: 1em;
     background-color: #f1f1f1;
     border-radius: 8px;
 }
+
 .inline {
     display: inline-flex;
     width: 100%;
 }
 
-input:valid {
-    border: 1px solid #121212;
-}
-
-input:invalid {
-    border: 1px solid red;
+input {
+    -webkit-transition: .3s linear;
 }

@@ -1,5 +1,6 @@
 const API = "http://localhost:8080/";
 
+
 function show(elementId) {
   document.getElementById(elementId).style.display = "block";
 }
@@ -78,6 +79,18 @@ async function refreshOverviewData() {
 function rememberTab() {
   const element = document.querySelectorAll(".active");
   localStorage.setItem("lastActiveTab", element[0].id);
+}
+
+function validate(event) {
+  console.log(event);
+  if (event.value === "") {
+    event.style.webkitTransition = ".5s linear";
+    event.style.border = "1px solid red";
+  } else {
+
+    event.style.webkitTransition = ".5s linear";
+    event.style.border = "1px solid black";
+  }
 }
 
 function formatDate(date) {

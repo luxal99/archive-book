@@ -21,24 +21,28 @@
     <form id="archive-book-form">
         <input type="hidden" name="id">
         <label>Name of archive</label>
-        <input required class="form-control" type="text" name="title"
+        <input oninput="validate(this)"
+               onclick="validate(this)" required class="form-control" type="text" name="title"
                placeholder="Name">
         <label>Number of shelf</label>
-        <input required class="form-control" type="text" name="shelfNo"
+        <input oninput="validate(this)"
+               onclick="validate(this)" required class="form-control" type="text" name="shelfNo"
                placeholder="Number of shelf">
 
-        <textarea required class="form-control" style="margin-top: 1em" type="text" name="note"
+        <textarea  required class="form-control" style="margin-top: 1em" type="text" name="note"
                   rows="3"
                   placeholder="Note"></textarea>
 
         <label>Select location</label>
-        <select required class="form-control" name="idLocation">
+        <select oninput="validate(this)"
+                onclick="validate(this)" required class="form-control" name="idLocation">
             <% for(var x = 0; x < listOfLocations.length; x++) { %>
                 <option value='<%= listOfLocations[x].id; %>'><%= listOfLocations[x].name; %></option>
             <% } %>
         </select>
         <label>Select mark</label>
-        <select required class="form-control" name="idMark">
+        <select oninput="validate(this)"
+                onclick="validate(this)" required class="form-control" name="idMark">
             <% for(var x = 0; x < listOfMarks.length; x++) { %>
                 <option value='<%= listOfMarks[x].id; %>'><%= listOfMarks[x].name; %></option>
             <% } %>
@@ -46,18 +50,21 @@
         <div class="row mt-3">
             <div class="col">
                 <label>Start year</label>
-                <input required class="form-control" type="number" name="startYear"
+                <input oninput="validate(this)"
+                       onclick="validate(this)" required class="form-control" type="number" name="startYear"
                        placeholder="Year">
             </div>
             <div class="col">
                 <label>End year</label>
-                <input required class="form-control" type="number" name="endYear"
+                <input oninput="validate(this)"
+                       onclick="validate(this)" required class="form-control" type="number" name="endYear"
                        placeholder="Year">
             </div>
         </div>
 
         <label>Expiration date</label>
-        <input required class="form-control" type="date" name="expirationDate"
+        <input oninput="validate(this)"
+               onclick="validate(this)" required class="form-control" type="date" name="expirationDate"
                placeholder="Expiration date">
     </form>
     <p class="mt-3">Dozvoljene ekstenzije: <b>pdf, doc, docx, csv, xlsx</b></p>

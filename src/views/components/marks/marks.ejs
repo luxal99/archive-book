@@ -55,13 +55,16 @@
     <form id="mark-form">
         <label>Name of mark(only letters)</label>
         <input class="form-control"
+               oninput="validate(this)"
+               onclick="validate(this)"
                required
                minlength="2"
                type="text" name="name"
                placeholder="Name">
         <input class="form-control" type="hidden" name="id">
         <label>Select location</label>
-        <select class="form-control" name="idLocation">
+        <select oninput="validate(this)"
+                onclick="validate(this)" class="form-control" name="idLocation">
             <% for(var x = 0; x < listOfLocations.length; x++) { %>
                 <option value='<%= listOfLocations[x].id %>'><%= listOfLocations[x].name %></option>
             <% } %>

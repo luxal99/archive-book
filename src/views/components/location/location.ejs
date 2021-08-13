@@ -48,7 +48,9 @@
 <div id="location-form-row">
     <form id="location-form">
         <label>Name of location(only letters)</label>
-        <input required class="form-control" type="text" name="name" id="locationName"
+        <input
+               oninput="validate(this)"
+               onclick="validate(this)" required class="form-control" type="text" name="name" id="locationName"
                placeholder="Name">
         <input class="form-control" type="hidden" name="id"
                placeholder="Name">
