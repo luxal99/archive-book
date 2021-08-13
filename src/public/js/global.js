@@ -44,6 +44,9 @@ async function httpRequest(url, method, body, callBack) {
     },
     body: body ? body : {},
   }).then((response) => {
+    if (callBack) {
+      callBack();
+    }
     return response;
   });
 };
