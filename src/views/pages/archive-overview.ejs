@@ -19,25 +19,34 @@
 <body id="body">
 <div class="wrapper">
     <div class="container">
-
         <%
         archive.createdDate = new Date(archive.createdDate);
         archive.expirationDate = new Date(archive.expirationDate);
         %>
-        <% if(archive.status === "ACTIVE"){ %>
-            <div class="text-right">
-                <button class="btn btn-danger" onclick="closeArchive(`<%= archive.id; %>`)"><i class="fa fa-times"
-                                                                                               aria-hidden="true"></i>
+        <div class="row">
+            <div class="col-6">
+                <button class="btn btn-secondary" onclick="history.back()"><i class="fa fa-arrow-left"
+                                                                              aria-hidden="true"></i> Back
                 </button>
             </div>
-        <% } %>
-        <% if(archive.status === "CLOSED"){ %>
-            <div class="text-right">
-                <button class="btn btn-secondary"><i class="fa fa-times" aria-hidden="true"></i>
-                </button>
+            <div class="col-6">
+                <% if(archive.status === "ACTIVE"){ %>
+                    <div class="text-right">
+                        <button class="btn btn-danger" onclick="closeArchive(`<%= archive.id; %>`)"><i
+                                    class="fa fa-times"
+                                    aria-hidden="true"></i>
+                        </button>
+                    </div>
+                <% } %>
+                <% if(archive.status === "CLOSED"){ %>
+                    <div class="text-right">
+                        <button class="btn btn-secondary"><i class="fa fa-times" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                <% } %>
             </div>
-        <% } %>
-        <h1><%= archive.title; %></h1>
+        </div>
+        <h1 class="mt-3"><%= archive.title; %></h1>
         <div class="collapse-div m-0">
             <div class="row">
                 <div class="col">
