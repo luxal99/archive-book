@@ -128,7 +128,7 @@
             <h4 class="m-2">Show closed archive books</h4>
         </div>
         <div class="col text-right">
-            <button class="btn" onclick="showHideCollapse('closed-archive-books','collpase-icon')"><i
+            <button class="btn" onclick="showHideCollapse('closed-div','collpase-icon')"><i
                         class="fa fa-chevron-left"
                         id="collpase-icon"
                         aria-hidden="true"></i>
@@ -136,7 +136,7 @@
         </div>
     </div>
 </div>
-<div id="closed-archive-books">
+<div id="closed-div">
     <h3 style="margin-left: 1em"><b>Closed archive books</b></h3>
     <div class="row">
         <% for(let i = 0; i < listOfClosedArchiveBooks.length; i++) { %>

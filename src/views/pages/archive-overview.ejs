@@ -26,34 +26,45 @@
         %>
         <% if(archive.status === "ACTIVE"){ %>
             <div class="text-right">
-                <button class="btn btn-danger" onclick="closeArchive(`<%= archive.id ;%>`)">Close archive</button>
+                <button class="btn btn-danger" onclick="closeArchive(`<%= archive.id; %>`)"><i class="fa fa-times"
+                                                                                               aria-hidden="true"></i>
+                </button>
             </div>
         <% } %>
         <% if(archive.status === "CLOSED"){ %>
             <div class="text-right">
-                <h3 style="color: darkred">Closed</h3>
+                <button class="btn btn-secondary"><i class="fa fa-times" aria-hidden="true"></i>
+                </button>
             </div>
         <% } %>
-        <div class="inline">
-            <div class="m-2">
-                <h6 class="text-right fw-bold">Kreirano dana:</h6>
-                <h4 class="text-right "><%= archive.createdDate.getDate() + "." + Number.parseInt(archive.createdDate.getMonth() + 1) + "." + archive.createdDate.getUTCFullYear(); %></h4>
-            </div>
-            <div class="m-2">
-                <h6 class="text-right fw-bold">Važi do:</h6>
-                <h4 class="text-right "><%= archive.expirationDate.getDate() + "." + Number.parseInt(archive.expirationDate.getMonth() + 1) + "." + archive.expirationDate.getUTCFullYear(); %></h4>
-            </div>
-            <div class="m-2">
-                <h6 class="text-right fw-bold">Za godine:</h6>
-                <h4 class="text-right "><%= archive.startYear + '-' + archive.endYear %></h4>
+        <h1><%= archive.title; %></h1>
+        <div class="collapse-div m-0">
+            <div class="row">
+                <div class="col">
+                    <h4 class="m-2"><b>More info</b></h4>
+                </div>
+                <div class="col text-right">
+                    <button class="btn" onclick="showHideCollapse('info','collpase-icon')"><i
+                                class="fa fa-chevron-left"
+                                id="collpase-icon"
+                                aria-hidden="true"></i>
+                    </button>
+                </div>
             </div>
         </div>
-        <h1><%= archive.title; %></h1>
-        <h3><b>Broj police/ Fascikla: </b><%= archive.shelfNo; %> /<%= archive.idLocation.name; %> </h3>
-        <h3><b>Oznaka: </b><%= archive.idMark.name; %> </h3>
-        <h3><b></b></h3>
-        <h4><b>Količina: </b><%= archive.listOfDocuments.length; %></h4>
-        <p><%= archive.note; %></p>
+        <div class="m-3" id="info">
+            <h4><b>Broj police/ Fascikla: </b><%= archive.shelfNo; %> /<%= archive.idLocation.name; %> </h4>
+            <h4><b>Oznaka: </b><%= archive.idMark.name; %> </h4>
+            <h4><b>Kreirano
+                    dana: </b><%= archive.createdDate.getDate() + "." + Number.parseInt(archive.createdDate.getMonth() + 1) + "." + archive.createdDate.getUTCFullYear(); %>
+            </h4>
+            <h4><b>Važi do:
+                </b> <%= archive.expirationDate.getDate() + "." + Number.parseInt(archive.expirationDate.getMonth() + 1) + "." + archive.expirationDate.getUTCFullYear(); %>
+            </h4>
+            <h4><b>Tekuće godine: </b><%= archive.startYear + '-' + archive.endYear %></h4>
+            <h4><b>Količina: </b><%= archive.listOfDocuments.length; %></h4>
+            <p><%= archive.note; %></p>
+        </div>
         <% if(archive.status === "ACTIVE"){ %>
             <button type="button" class="btn default-btn" style="margin: 1em 0" data-bs-toggle="modal"
                     data-bs-target="#exampleModal">
