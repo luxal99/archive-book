@@ -76,6 +76,11 @@ i {
     -webkit-transition: .3s linear;
 }
 
+#spinner {
+    height: 100vh;
+    padding-top: 25em
+}
+
 @media screen and (max-width: 570px) {
     .wrapper {
         padding: 5em 1em;
