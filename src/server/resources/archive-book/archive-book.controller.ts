@@ -1,4 +1,4 @@
-import { Controller, Delete, Get, HttpStatus, Param, Put, Req, Res } from "@nestjs/common";
+import { Controller, Delete, HttpStatus, Param, Put, Req, Res } from "@nestjs/common";
 import { ArchiveBookService } from "./archive-book.service";
 import { GenericController } from "../../util/generic/generic.controller";
 import { ArchiveBook } from "../../entity/ArchiveBook";
@@ -29,13 +29,14 @@ export class ArchiveBookController extends GenericController<ArchiveBook> {
     }
   }
 
+
   @Put("close/:id")
   async closeArchiveBook(@Param("id") id: number, @Res() res: Response) {
     try {
       const archiveBook = await this.archiveBookService.findOne(id);
       if (moment().isAfter(archiveBook.expirationDate)) {
         archiveBook.status = ArchiveBookStatusEnum.CLOSED;
-        res.send(await this.archiveBookService.update(id, archiveBook));
+        res.send(await this.archiveBookService.update(archiveBook.id, archiveBook));
 
       } else {
         res.status(HttpStatus.NOT_ACCEPTABLE).send({ message: "Current date is before than expiration date" });

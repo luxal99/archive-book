@@ -29,7 +29,7 @@
                onclick="validate(this)" required class="form-control" type="text" name="shelfNo"
                placeholder="Number of shelf">
 
-        <textarea  required class="form-control" style="margin-top: 1em" type="text" name="note"
+        <textarea required class="form-control" style="margin-top: 1em" type="text" name="note"
                   rows="3"
                   placeholder="Note"></textarea>
 
@@ -111,9 +111,6 @@
                                 {name:'expirationDate',value:`<%= listOfArchiveBooks[i].expirationDate %>`},
                                 ])"><i
                             class="fa fa-pencil-square" aria-hidden="true"></i></button>
-                <button class="btn delete-btn"
-                        onclick="deleteArchive(`<%= listOfArchiveBooks[i].id; %>`)"><i
-                            class="fa fa-times" aria-hidden="true"></i></button>
                 <button class="btn overview-btn"
                         onclick="openArchiveBookOverview(`<%= listOfArchiveBooks[i].id; %>`)"><i
                             class="fa fa-eye" aria-hidden="true"></i>
@@ -149,9 +146,6 @@
         <% for(let i = 0; i < listOfClosedArchiveBooks.length; i++) { %>
             <div class="col-12 ab-card">
                 <div class="text-right">
-                    <button class="btn delete-btn"
-                            onclick="deleteArchive(`<%= listOfClosedArchiveBooks[i].id; %>`)"><i
-                                class="fa fa-times" aria-hidden="true"></i></button>
                     <button class="btn overview-btn"
                             onclick="openArchiveBookOverview(`<%= listOfClosedArchiveBooks[i].id; %>`)">
                         <i

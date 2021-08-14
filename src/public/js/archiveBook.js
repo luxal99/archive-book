@@ -108,8 +108,8 @@ async function closeArchive(idArchive) {
     const messageResponse = await response.json();
     alert(messageResponse.message);
   } else {
-    alert("Archive close successfully");
-    await refreshOverviewData();
+    alert("Successfully closed");
+    location.href = API;
   }
 }
 

@@ -1,6 +1,5 @@
 const API = "http://localhost:8080/";
 
-
 function show(elementId) {
   document.getElementById(elementId).style.display = "block";
 }
