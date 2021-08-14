@@ -86,19 +86,6 @@ function openArchiveBookOverview(archiveBookID) {
   location.href = `${API}overview/${archiveBookID}`;
 }
 
-async function deleteDocument(idDocument) {
-  await fetch(API + `document/${idDocument}`, {
-    method: "DELETE",
-    mode: "cors",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: null,
-  }).then(async () => {
-    await refreshOverviewData();
-  });
-}
-
 async function deleteArchive(idArchive) {
   await fetch(API + `archive-book/${idArchive}`, {
     method: "DELETE",
@@ -120,6 +107,9 @@ async function closeArchive(idArchive) {
   if (response.status === 406) {
     const messageResponse = await response.json();
     alert(messageResponse.message);
+  } else {
+    alert("Archive close successfully");
+    await refreshOverviewData();
   }
 }
 
