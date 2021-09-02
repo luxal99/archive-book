@@ -3,7 +3,7 @@ import { GenericService } from "../../util/generic/generic.service";
 import { Document } from "../../entity/Document";
 import { DocumentRepository } from "../../repository/DocumentRepository";
 import * as fs from "fs";
-import { DELETE_PATH } from "../../environment/local";
+import { DELETE_PATH } from "../../environment/prod";
 
 
 @Injectable()

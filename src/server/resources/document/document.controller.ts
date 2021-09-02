@@ -8,7 +8,7 @@ import { extname } from "path";
 import { Request, Response } from "express";
 import { ArchiveBookService } from "../archive-book/archive-book.service";
 import { fileFilter } from "src/server/util/fileFilter/fileFilter";
-import { UPLOAD_PATH } from "../../environment/local";
+import { UPLOAD_PATH } from "../../environment/prod";
 
 @Controller("document")
 export class DocumentController extends GenericController<Document> {
